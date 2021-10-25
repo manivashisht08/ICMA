@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="SubscriptionTVCell" customModule="ICMA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99a-LM-dfK">
+                        <rect key="frame" x="20" y="15" width="280" height="41"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go Pro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm5-ua-dak" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
+                                <rect key="frame" x="15" y="10" width="176.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="0Me-Ic-72W">
+                                <rect key="frame" x="211.5" y="1.5" width="56.5" height="38.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZt-5W-sMl" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" name="appButton"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXQ-z0-0cn" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="22.5" width="56.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                        <color key="textColor" red="0.55715292689999996" green="0.55723601580000004" blue="0.55713480709999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0Me-Ic-72W" firstAttribute="leading" secondItem="Tm5-ua-dak" secondAttribute="trailing" constant="20" id="BAb-L3-n3S"/>
+                            <constraint firstItem="Tm5-ua-dak" firstAttribute="centerY" secondItem="99a-LM-dfK" secondAttribute="centerY" id="EQl-Ry-nGn"/>
+                            <constraint firstAttribute="trailing" secondItem="0Me-Ic-72W" secondAttribute="trailing" constant="12" id="az2-p5-RUD"/>
+                            <constraint firstItem="Tm5-ua-dak" firstAttribute="leading" secondItem="99a-LM-dfK" secondAttribute="leading" constant="15" id="lGC-yi-bhT"/>
+                            <constraint firstItem="0Me-Ic-72W" firstAttribute="centerY" secondItem="99a-LM-dfK" secondAttribute="centerY" id="nDu-yR-vfa"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="appButton"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="99a-LM-dfK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="498-xd-3z6"/>
+                    <constraint firstAttribute="bottom" secondItem="99a-LM-dfK" secondAttribute="bottom" constant="15" id="VlV-sT-MaW"/>
+                    <constraint firstAttribute="trailing" secondItem="99a-LM-dfK" secondAttribute="trailing" constant="20" id="gOr-gU-kZl"/>
+                    <constraint firstItem="99a-LM-dfK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="uI0-tu-u12"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblDetails" destination="Tm5-ua-dak" id="ubq-3p-6cz"/>
+                <outlet property="lblRate" destination="hZt-5W-sMl" id="t4F-hE-6pe"/>
+                <outlet property="lblTime" destination="KXQ-z0-0cn" id="YJi-B5-pHl"/>
+            </connections>
+            <point key="canvasLocation" x="-16" y="124.58770614692655"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="appButton">
+            <color red="0.62000000476837158" green="0.19599999487400055" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

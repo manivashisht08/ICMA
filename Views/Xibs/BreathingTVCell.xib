@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="104" id="KGk-i7-Jjw" customClass="BreathingTVCell" customModule="ICMA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yij-nn-iTH">
+                        <rect key="frame" x="10" y="4" width="300" height="96"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hVe-fT-TDy">
+                                <rect key="frame" x="8" y="10.5" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hVe-fT-TDy" secondAttribute="height" multiplier="1:1" id="U5C-2Y-wvX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="gZd-G0-bSN">
+                                <rect key="frame" x="93" y="10.5" width="187" height="75"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgB-U4-okc" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1G-CC-gQY" customClass="ICRegularLabel" customModule="ICMA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="53" width="187" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="QEt-KP-As3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15.5"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gZd-G0-bSN" firstAttribute="bottom" secondItem="hVe-fT-TDy" secondAttribute="bottom" id="Cjs-rN-MQJ"/>
+                            <constraint firstItem="hVe-fT-TDy" firstAttribute="centerY" secondItem="Yij-nn-iTH" secondAttribute="centerY" id="FrI-59-V7F"/>
+                            <constraint firstItem="gZd-G0-bSN" firstAttribute="top" secondItem="hVe-fT-TDy" secondAttribute="top" id="Ie8-Jx-w5i"/>
+                            <constraint firstItem="gZd-G0-bSN" firstAttribute="leading" secondItem="hVe-fT-TDy" secondAttribute="trailing" constant="10" id="T6K-tY-LsN"/>
+                            <constraint firstItem="hVe-fT-TDy" firstAttribute="width" secondItem="Yij-nn-iTH" secondAttribute="width" multiplier="0.25" id="W47-8K-kpZ"/>
+                            <constraint firstItem="hVe-fT-TDy" firstAttribute="leading" secondItem="Yij-nn-iTH" secondAttribute="leading" constant="8" id="Woy-f2-ibI"/>
+                            <constraint firstAttribute="trailing" secondItem="gZd-G0-bSN" secondAttribute="trailing" constant="20" id="czX-tX-EUg"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Yij-nn-iTH" secondAttribute="bottom" constant="4" id="Ni2-MV-Tux"/>
+                    <constraint firstAttribute="trailing" secondItem="Yij-nn-iTH" secondAttribute="trailing" constant="10" id="Oj8-ap-C0G"/>
+                    <constraint firstItem="Yij-nn-iTH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="SCJ-pP-fHh"/>
+                    <constraint firstItem="Yij-nn-iTH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="g9f-f8-19r"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblName" destination="OgB-U4-okc" id="9FJ-LW-c3r"/>
+                <outlet property="lblTime" destination="U1G-CC-gQY" id="Oq6-6a-pZM"/>
+                <outlet property="profileImg" destination="hVe-fT-TDy" id="aWb-1u-mrr"/>
+            </connections>
+            <point key="canvasLocation" x="-17.600000000000001" y="73.763118440779621"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

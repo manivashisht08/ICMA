@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="bell-mt-grassetto.ttf">
+            <string>BellMTBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfileViewForTitle" customModule="ICMA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="429" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npB-al-Q9S">
+                    <rect key="frame" x="10" y="0.0" width="409" height="90"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRk-LQ-BhY">
+                            <rect key="frame" x="10" y="5" width="389" height="80"/>
+                            <fontDescription key="fontDescription" name="BellMTBold" family="Bell MT" pointSize="21"/>
+                            <color key="textColor" name="appDarkBlack"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="FRk-LQ-BhY" secondAttribute="trailing" constant="10" id="Fmv-tV-tuh"/>
+                        <constraint firstAttribute="bottom" secondItem="FRk-LQ-BhY" secondAttribute="bottom" constant="5" id="KGu-H1-UEw"/>
+                        <constraint firstItem="FRk-LQ-BhY" firstAttribute="top" secondItem="npB-al-Q9S" secondAttribute="top" constant="5" id="Ocr-fh-Dnk"/>
+                        <constraint firstItem="FRk-LQ-BhY" firstAttribute="leading" secondItem="npB-al-Q9S" secondAttribute="leading" constant="10" id="TK7-8O-sHM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstItem="npB-al-Q9S" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="L1n-kE-Zu4"/>
+                <constraint firstItem="npB-al-Q9S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZP1-83-2ek"/>
+                <constraint firstAttribute="bottom" secondItem="npB-al-Q9S" secondAttribute="bottom" id="rEd-cS-aOQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="npB-al-Q9S" secondAttribute="trailing" constant="10" id="s1S-FU-ETy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleLbl" destination="FRk-LQ-BhY" id="O3t-qV-5sI"/>
+            </connections>
+            <point key="canvasLocation" x="-34.399999999999999" y="-477.66116941529236"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="appDarkBlack">
+            <color red="0.059000000357627869" green="0.059000000357627869" blue="0.063000001013278961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
