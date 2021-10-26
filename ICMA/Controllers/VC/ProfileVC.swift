@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import SDWebImage
 
 class ProfileVC: UIViewController {
 
@@ -14,10 +16,14 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var tblProfile: UITableView!
     var ProfileArray = [ProfileData]()
+    var lastName = String()
+    var firstName = String()
+    var mainImg = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         tblProfile.dataSource = self
         tblProfile.delegate = self
+        getPrayerApi()
         
         tblProfile.register(UINib(nibName: "ProfileTVCell", bundle: nil), forCellReuseIdentifier: "ProfileTVCell")
         self.ProfileArray.append(ProfileData(image: ICImageName.iconMember, details: "Membership"))
@@ -37,32 +43,61 @@ class ProfileVC: UIViewController {
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
         }
-        let userId = UserDefaults.standard.string(forKey: "id") ?? ""
-        var prm = [String:Any]()
-        prm = ["userid":userId]
-        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.getProfileDetail, params: prm, headers: <#T##HTTPHeaders?#>) { (response) in
-            let result = response as AnyObject
-            print(result)
-            let msg = result["message"] as? String ?? ""
-            let status = result ["status"] as? Int ?? 0
-            let data = result ["data"] as? [String:Any]
-                
-            if status == 1{
-                let proImage = data["profileimage"] as? String ?? ""
-                lblEmail.text = data["email"] as? String ?? ""
-                lblName.text = data["name"] as? String ?? ""
-            }else{
-                alert(AppAlertTitle.appName.rawValue, message: message, view: self)
-            }
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
         
-        } failure: { error in
+        let userId = UserDefaults.standard.string(forKey: "id") ?? ""
+//        var prm = [String:Any]()
+//        prm = ["userid":userId]
+        let headers:HTTPHeaders = ["Token":token]
+        AFWrapperClass.requestGETURL(baseURL + WSMethods.getProfileDetail, params:nil, headers:headers) { (response) in
+            print(response)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let msg = response["message"] as? String ?? ""
+            let status = response ["status"] as? Int ?? 0
+            let data = response ["data"] as? [String:Any] ?? [:]
+            let fName = data["firstname"] as? String ?? ""
+            let lName = data ["lastname"] as? String ?? ""
+            self.lastName = lName
+            self.firstName = fName
+            self.lblEmail.text = data["email"] as? String ?? ""
+            self.lblName.text = "\(fName) \(lName)"
+            self.mainImg =  data["profileimage"] as? String ?? ""
+            self.imgProfile.sd_setImage(with: URL(string: data["profileimage"] as? String ?? ""), placeholderImage: UIImage(named: "placehldr"))
+            
+        } failure: { (error) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
         }
-
     }
+        
+//        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.getProfileDetail, params: [:], headers: ["Token": token]) { (response) in
+//            let result = response as AnyObject
+//            print(result)
+//            let msg = result["message"] as? String ?? ""
+//            let status = result ["status"] as? Int ?? 0
+//            let data = result ["data"] as? [String:Any]
+//
+//            if status == 1{
+////                let proImage = data["profileimage"] as? String ?? ""
+////                lblEmail.text = data["email"] as? String ?? ""
+////                lblName.text = data["name"] as? String ?? ""
+////                self.proImage.sd_setImage
+//            }else{
+//          //      alert(AppAlertTitle.appName.rawValue, message: message, view: self)
+//            }
+//
+//        } failure: { error in
+//            AFWrapperClass.svprogressHudDismiss(view: self)
+//            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+//        }
+
+    
     @IBAction func btnProfile(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileSubscriptionVC") as! ProfileSubscriptionVC
+        vc.email = lblEmail.text ?? ""
+        vc.fName = firstName
+        vc.lName = lastName
+        vc.proImage = mainImg
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

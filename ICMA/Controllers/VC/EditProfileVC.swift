@@ -8,6 +8,8 @@
 import UIKit
 import Toucan
 import IQKeyboardManagerSwift
+import Alamofire
+
 
 class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, ImagePickerDelegate  {
    
@@ -45,8 +47,34 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
         txtLastName.delegate = self
         txtEmail.delegate = self
         txtPswrd.delegate = self
-    } 
+    }
     
+//    func editProfileApi(){
+//        DispatchQueue.main.async {
+//            AFWrapperClass.svprogressHudShow(title: "", view: self)
+//        }
+//        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+//        let userId = UserDefaults.standard.string(forKey: "id") ?? ""
+//        var headers:HTTPHeaders = ["token":token]
+//        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.editProfile, params: [:], headers: headers) { (response) in
+//            print(response)
+//            AFWrapperClass.svprogressHudDismiss(view: self)
+//            let msg = response["message"] as? String ?? ""
+//            let status = response["status"] as? Int ?? 0
+//           
+//        } failure: { (error) in
+//            <#code#>
+//        }
+//
+//    }
+//    func generatingParameters() -> [String:AnyObject] {
+//        var parameters:[String:AnyObject] = [:]
+//        parameters["email"] = txtEmail.text  as AnyObject
+//        parameters["password"] = txtPswrd.text  as AnyObject
+//        parameters["firstname"] = txtFirstName.text  as AnyObject
+//        parameters["lastname"] = txtLastName.text  as AnyObject
+//        parameters[""]
+//    }
     func validate() -> Bool {
         
         if ValidationManager.shared.isEmpty(text: txtFirstName.text) == true {

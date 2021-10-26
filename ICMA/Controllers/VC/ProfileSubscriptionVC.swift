@@ -10,7 +10,7 @@ import Toucan
 import IQKeyboardManagerSwift
 
 class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDelegate {
-
+    
     @IBOutlet weak var lblActionStatus: ICRegularLabel!
     @IBOutlet weak var lblExpirationDate: ICRegularLabel!
     @IBOutlet weak var lblStartDate: ICRegularLabel!
@@ -26,12 +26,18 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
     @IBOutlet weak var txtFirstName: ICUsernameTextField!
     @IBOutlet weak var imgProfile: UIImageView!
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
-
+    var fName = String()
+    var lName = String()
+    var email = String()
+    var proImage = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-setup()
-       
+        setup()
+        txtEmail.text = email
+        txtFirstName.text = fName
+        txtLastName.text = lName
+        self.imgProfile.sd_setImage(with: URL(string: proImage), placeholderImage: UIImage(named: "placehldr"))
     }
     
     func setup(){
@@ -107,30 +113,30 @@ setup()
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
-            case txtFirstName:
-                fNameView.borderColor =  ICColor.appButton
-            case txtLastName:
-                lNameView.borderColor =  ICColor.appButton
-            case txtEmail:
-                emailView.borderColor =  ICColor.appButton
-            case txtPswrd:
-                pswrdView.borderColor =  ICColor.appButton
-            default:break
-                
+        case txtFirstName:
+            fNameView.borderColor =  ICColor.appButton
+        case txtLastName:
+            lNameView.borderColor =  ICColor.appButton
+        case txtEmail:
+            emailView.borderColor =  ICColor.appButton
+        case txtPswrd:
+            pswrdView.borderColor =  ICColor.appButton
+        default:break
+            
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
-            case txtFirstName:
-                fNameView.borderColor = ICColor.appBorder
-            case txtLastName:
-                lNameView.borderColor = ICColor.appBorder
-            case txtEmail:
-                emailView.borderColor = ICColor.appBorder
-            case txtPswrd:
-                pswrdView.borderColor = ICColor.appBorder
-            default:break
+        case txtFirstName:
+            fNameView.borderColor = ICColor.appBorder
+        case txtLastName:
+            lNameView.borderColor = ICColor.appBorder
+        case txtEmail:
+            emailView.borderColor = ICColor.appBorder
+        case txtPswrd:
+            pswrdView.borderColor = ICColor.appBorder
+        default:break
         }
     }
     

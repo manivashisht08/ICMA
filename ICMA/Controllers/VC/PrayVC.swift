@@ -36,21 +36,21 @@ class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         txtViewPrayer.delegate = self
         
     }
-
-    func addPrayApi(name:String,title:String, detail:String ){
-        let params = ["name":txtName.text!, "title":txtRequest.text! , "detail":txtViewPrayer.text!]
-        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.addPrayer, params: params, headers: nil) { (response) in
-            AFWrapperClass.svprogressHudDismiss(view: self)
-            print(response)
-            
-        } failure: { (error) in
-            AFWrapperClass.svprogressHudDismiss(view: self)
-            print(error)
-            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
-        }
-
-        
-    }
+//
+//    func addPrayApi(name:String,title:String, detail:String ){
+//        let params = ["name":txtName.text!, "title":txtRequest.text! , "detail":txtViewPrayer.text!]
+//        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.addPrayer, params: params, headers: nil) { (response) in
+//            AFWrapperClass.svprogressHudDismiss(view: self)
+//            print(response)
+//
+//        } failure: { (error) in
+//            AFWrapperClass.svprogressHudDismiss(view: self)
+//            print(error)
+//            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+//        }
+//
+//
+//    }
     
     //MARK: UITextFieldDelegate
     
@@ -126,7 +126,7 @@ class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBAction func btnSubmit(_ sender: Any) {
 //        validate()
-        addPrayApi(name: "txtName", title: "txtRequest", detail: "txtViewPrayer")
+//        addPrayApi(name: "txtName", title: "txtRequest", detail: "txtViewPrayer")
     }
     
     
