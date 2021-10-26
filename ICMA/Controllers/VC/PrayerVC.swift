@@ -26,6 +26,9 @@ class PrayerVC: UIViewController {
         self.PrayerArray.append(PrayerData(name: "Pray for my dad's recovery", details: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs", time: "Mar 28-3:30am"))
     }
     
+    
+   
+    
     @IBAction func btnAdd(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PrayVC") as! PrayVC
         self.navigationController?.pushViewController(vc, animated: true)

@@ -7,6 +7,7 @@
 */
 
 //Backend Errors
+
 "error_0" = "Something went wrong, Please try after sometime.";
 "error_101" = "Email address is empty.";
 "error_102" = "Password is empty.";
@@ -259,7 +260,6 @@
 //accept request
 
 "your_request_submitted" = "Your request submitted.";
-
 "location_permission_title" = "Allow Location";
 "location_permission_description" = "We will need your location to give you a better experience";
 "notification_permission_title" = "Don't Miss Out";

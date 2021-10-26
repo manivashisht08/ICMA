@@ -214,6 +214,10 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
         sender.isSelected = !sender.isSelected
         self.rememberMeSelected = sender.isSelected
         self.btnRemember.setImage(rememberMeSelected == true ? #imageLiteral(resourceName: "check") : #imageLiteral(resourceName: "uncheck"), for: .normal)
+        if !rememberMeSelected{
+            removeAppDefaults(key: "userEmail")
+            removeAppDefaults(key: "userPassword")
+        }
     }
     
     @IBAction func btnForgot(_ sender: Any) {

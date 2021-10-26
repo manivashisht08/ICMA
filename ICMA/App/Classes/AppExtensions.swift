@@ -402,5 +402,17 @@ extension UIViewController {
         }
         self.present(alert, animated: true, completion: nil)
     }
+    
+//    func setImage(imageView:UIImageView,image:String,fullScreen:Bool){
+//        imageView.kf.setImage(with: URL(string: image), placeholder: plcholderImage(fullSreen: fullScreen), options: nil, progressBlock: nil, completionHandler: nil)
+//    }
+//
+//    func plcholderImage(fullSreen:Bool) -> UIImage{
+//        if fullSreen{
+//           return UIImage(named: "fullScreenplaceholder")!
+//        }else{
+//        return UIImage(named: "placeholder")!
+//        }
+//    }
 }
 

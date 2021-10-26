@@ -28,6 +28,39 @@ class ProfileVC: UIViewController {
         self.ProfileArray.append(ProfileData(image: ICImageName.iconLogout, details: "Logout")) 
     }
     
+//    func prm() -> [String:Any]{
+//        let prm = ["user_id":userId]
+//        return prm
+//    }
+    
+    func getPrayerApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
+        }
+        let userId = UserDefaults.standard.string(forKey: "id") ?? ""
+        var prm = [String:Any]()
+        prm = ["userid":userId]
+        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.getProfileDetail, params: prm, headers: <#T##HTTPHeaders?#>) { (response) in
+            let result = response as AnyObject
+            print(result)
+            let msg = result["message"] as? String ?? ""
+            let status = result ["status"] as? Int ?? 0
+            let data = result ["data"] as? [String:Any]
+                
+            if status == 1{
+                let proImage = data["profileimage"] as? String ?? ""
+                lblEmail.text = data["email"] as? String ?? ""
+                lblName.text = data["name"] as? String ?? ""
+            }else{
+                alert(AppAlertTitle.appName.rawValue, message: message, view: self)
+            }
+        
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+
+    }
     @IBAction func btnProfile(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileSubscriptionVC") as! ProfileSubscriptionVC
         self.navigationController?.pushViewController(vc, animated: true)

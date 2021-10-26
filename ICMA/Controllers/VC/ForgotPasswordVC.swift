@@ -54,13 +54,14 @@ class ForgotPasswordVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
         return true
     }
     
+    func prm() -> [String:Any]{
+        let prm = ["email":txtEmail.text!]
+        return prm
+    }
+    
     func forgotPasswordApi(email : String){
-        //        var token = UserDefaults.standard.value(forKey: "deviceToken") as? String ?? ""
-        //        if token == ""{
-        //            token = "123"
-        //        }
-        let params = ["email":txtEmail.text!]
-        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.forgotPassword, params: params, headers: nil) { (response) in
+        AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
+        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.forgotPassword, params: prm(), headers: nil) { (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             let message = response["message"] as? String ?? ""
@@ -96,7 +97,7 @@ class ForgotPasswordVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
             return
         }
         else{
-//            forgotPasswordApi(email: "txtEmail")
+            forgotPasswordApi(email: "txtEmail")
         }
         
         
