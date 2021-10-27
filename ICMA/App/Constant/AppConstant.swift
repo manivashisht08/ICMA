@@ -22,7 +22,7 @@ struct WSMethods {
     static let forgotPassword = "forgotpassword.php"
     static let getProfileDetail = "getprofiledetail.php"
     static let editProfile = "editprofile.php"
-    static let changePassword = "changePassword.php"
+    static let getPrayers = "getprayers.php"
     static let resentVerficationEmail = "ResentVerficationEmail.php"
     static let addBiWeeklyInventory = "AddBiWeeklyInventory.php"
     static let getAllProduct = "GetAllProduct.php"

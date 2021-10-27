@@ -456,3 +456,49 @@ class ICEmailTextF: ICRegularTextField {
     }
     
 }
+class ICMobileNumberTextField: ICRegularTextField {
+    
+    var leftUserView: UIView {
+        let imgView = UIImageView(image: UIImage(named: ""))
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Customs
+    
+    func setup() {
+        
+        leftView = leftUserView
+        
+        self.keyboardType = .numberPad
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .words
+//        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
+//        attributes:[NSAttributedString.Key.foregroundColor: ICColor.appWhite])
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Override
+    
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+    }
+    
+    //------------------------------------------------------
+    
+    //MARK: Init
+    
+    /// common text field layout for inputs
+    ///
+    /// - Parameter aDecoder: aDecoder description
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+}
+
+

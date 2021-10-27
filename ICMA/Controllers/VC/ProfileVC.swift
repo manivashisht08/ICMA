@@ -44,16 +44,10 @@ class ProfileVC: UIViewController {
             AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
         }
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
-        
-        let userId = UserDefaults.standard.string(forKey: "id") ?? ""
-//        var prm = [String:Any]()
-//        prm = ["userid":userId]
-        let headers:HTTPHeaders = ["Token":token]
-        AFWrapperClass.requestGETURL(baseURL + WSMethods.getProfileDetail, params:nil, headers:headers) { (response) in
+        let header:HTTPHeaders = ["Token":token]
+        AFWrapperClass.requestGETURL(baseURL + WSMethods.getProfileDetail, params:nil, headers:header) { (response) in
             print(response)
             AFWrapperClass.svprogressHudDismiss(view: self)
-            let msg = response["message"] as? String ?? ""
-            let status = response ["status"] as? Int ?? 0
             let data = response ["data"] as? [String:Any] ?? [:]
             let fName = data["firstname"] as? String ?? ""
             let lName = data ["lastname"] as? String ?? ""
@@ -70,26 +64,6 @@ class ProfileVC: UIViewController {
         }
     }
         
-//        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.getProfileDetail, params: [:], headers: ["Token": token]) { (response) in
-//            let result = response as AnyObject
-//            print(result)
-//            let msg = result["message"] as? String ?? ""
-//            let status = result ["status"] as? Int ?? 0
-//            let data = result ["data"] as? [String:Any]
-//
-//            if status == 1{
-////                let proImage = data["profileimage"] as? String ?? ""
-////                lblEmail.text = data["email"] as? String ?? ""
-////                lblName.text = data["name"] as? String ?? ""
-////                self.proImage.sd_setImage
-//            }else{
-//          //      alert(AppAlertTitle.appName.rawValue, message: message, view: self)
-//            }
-//
-//        } failure: { error in
-//            AFWrapperClass.svprogressHudDismiss(view: self)
-//            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
-//        }
 
     
     @IBAction func btnProfile(_ sender: Any) {

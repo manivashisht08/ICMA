@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import Alamofire
 
 class PrayerVC: UIViewController {
-
+    var page = 1
+    var lastPage = "false"
+    var prayerGet = [getPrayerModel]()
+    
     @IBOutlet weak var tblPrayer: UITableView!
     var PrayerArray = [PrayerData]()
     override func viewDidLoad() {
@@ -16,18 +20,15 @@ class PrayerVC: UIViewController {
         tblPrayer.dataSource = self
         tblPrayer.delegate = self
         tblPrayer.separatorStyle = .none
-       
         tblPrayer.register(UINib(nibName: "PrayerTVCell", bundle: nil), forCellReuseIdentifier: "PrayerTVCell")
-        self.PrayerArray.append(PrayerData(name: "Pray for me", details: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs", time: "Sep 21-4:30am"))
-        self.PrayerArray.append(PrayerData(name: "Community", details: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs", time: "Oct 21-2:30am"))
-        self.PrayerArray.append(PrayerData(name: "Pray for my dad's recovery", details: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs", time: "Mar 28-3:30am"))
-        self.PrayerArray.append(PrayerData(name: "Pray for me", details: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs", time: "Sep 21-4:30am"))
-        self.PrayerArray.append(PrayerData(name: "Community", details: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs", time: "Oct 21-2:30am"))
-        self.PrayerArray.append(PrayerData(name: "Pray for my dad's recovery", details: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs", time: "Mar 28-3:30am"))
+        
     }
     
-    
-   
+    override func viewWillAppear(_ animated: Bool) {
+        page = 1
+        PrayerArray.removeAll()
+        addPrayApi()
+    }
     
     @IBAction func btnAdd(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PrayVC") as! PrayVC
@@ -36,17 +37,24 @@ class PrayerVC: UIViewController {
 }
 extension PrayerVC : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PrayerArray.count
+        return prayerGet.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrayerTVCell", for: indexPath) as! PrayerTVCell
-
-            cell.lblName.text = PrayerArray[indexPath.row].name
-            cell.lblTime.text = PrayerArray[indexPath.row].time 
-            cell.lblDetails.text = PrayerArray[indexPath.row].details
+        
+        cell.lblName.text = prayerGet[indexPath.row].name
+        cell.lblTime.text = prayerGet[indexPath.row].creation_at
+        cell.lblDetails.text = prayerGet[indexPath.row].detail
         return cell
         
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == prayerGet.count - 1{
+            if lastPage == "false"{
+                updateNextSet()
+            }
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -55,7 +63,10 @@ extension PrayerVC : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+    func updateNextSet(){
+        page = page + 1
+        addPrayApi()
+    }
 }
 struct PrayerData {
     var name : String
@@ -69,3 +80,49 @@ struct PrayerData {
     }
 }
 
+extension PrayerVC {
+    
+    func addPrayApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
+        }
+        //  let userId = UserDefaults.standard.string(forKey: "id") ?? ""
+        let param = ["pageNo":page,"perPage":"10"] as [String : Any]
+        print(param)
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        let header:HTTPHeaders = ["Content-Type":"application/json","token":token]
+        print(header)
+        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.getPrayers, params: param, headers: header) { (response) in
+            print(response)
+            print(baseURL + WSMethods.getPrayers)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let msg = response["message"] as? String ?? ""
+            let status = response ["status"] as? Int ?? 0
+            self.lastPage = response["lastPage"] as? String ?? "false"
+            if status == 1{
+                if let result = response as? [String:Any] {
+                    if let dataDict = result["data"] as? [[String:Any]]{
+                        print(dataDict)
+                        for i in 0..<dataDict.count{
+                            let time = Double(dataDict[i]["creation_at"] as? String ?? "") ?? 0.0
+                            let timeString = self.timeStringFromUnixTime(unixTime: time)
+                            self.prayerGet.append(getPrayerModel(id: dataDict[i]["id"] as? String ?? "", name: dataDict[i]["name"] as? String ?? "", userid: dataDict[i]["userid"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", detail: dataDict[i]["detail"] as? String ?? "", creation_at: timeString))
+                        }
+                        //  self.tblPrayer.reloadData()
+                        
+                    }
+                }
+                
+            }else{
+                alert(kAppName, message: msg, view: self)
+                // self.prayerGet.removeAll()
+            }
+            self.tblPrayer.reloadData()
+        } failure: { (error) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+        
+    }
+    
+}

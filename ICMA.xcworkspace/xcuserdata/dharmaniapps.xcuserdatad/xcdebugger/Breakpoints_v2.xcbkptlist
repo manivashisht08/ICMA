@@ -7,48 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A6CF5B92-48BF-4EAE-9956-D3C05C7E905B"
-            shouldBeEnabled = "Yes"
+            uuid = "B069BAE9-41F1-4915-B55B-02F3B85BD835"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ICMA/Controllers/VC/ProfileVC.swift"
+            filePath = "ICMA/Controllers/VC/PrayerVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "ProfileVC"
-            landmarkType = "3">
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "addPrayApi()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "819E06B1-D88E-4ABB-A4CB-63C2F74E4C90"
+            uuid = "10C9ADA5-8B9A-4DCA-9EB8-B78CB7119975"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ICMA/Controllers/VC/ProfileVC.swift"
+            filePath = "ICMA/Controllers/VC/EditProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "ProfileVC"
-            landmarkType = "3">
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "editProfileApis()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B4896DC1-D783-484B-A128-B039D2123399"
+            uuid = "8CC66BA5-3378-4594-A705-EC1B5757AFBD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ICMA/Controllers/VC/ProfileVC.swift"
+            filePath = "ICMA/Controllers/VC/EditProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "getPrayerApi()"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "editProfileApis()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "810881BB-EB67-4D8C-A4E7-CB8D057A3323"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ICMA/Controllers/VC/EditProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "editProfileApis()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

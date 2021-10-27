@@ -17,7 +17,7 @@ class AFWrapperClass{
     
     class func requestPOSTURL(_ strURL : String, params : Parameters,headers : HTTPHeaders?, success:@escaping (NSDictionary) -> Void, failure:@escaping (NSError) -> Void){
         let urlwithPercentEscapes = strURL.addingPercentEncoding( withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        AF.request(urlwithPercentEscapes!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: ["Content-Type":"application/json"])
+        AF.request(urlwithPercentEscapes!, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { (response) in
                 switch response.result {
                 case .success(let value):
@@ -50,6 +50,7 @@ class AFWrapperClass{
                    }
            }
        }
+    
     class func requestGETURL(_ strURL: String, params : [String : AnyObject]?,headers : HTTPHeaders?, success:@escaping (AnyObject) -> Void, failure:@escaping (NSError) -> Void) {
         
         let urlwithPercentEscapes = strURL.addingPercentEncoding( withAllowedCharacters: CharacterSet.urlQueryAllowed)

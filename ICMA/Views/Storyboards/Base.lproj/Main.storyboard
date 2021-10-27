@@ -4441,7 +4441,7 @@ Saturday's Video and Sunday's Video                           </string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zrs-1q-gHY" userLabel="PasswordView">
                                                                 <rect key="frame" x="0.0" y="309" width="343" height="85"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G3-Sw-atN" customClass="ICSemiboldLabel" customModule="ICMA" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G3-Sw-atN" customClass="ICSemiboldLabel" customModule="ICMA" customModuleProvider="target">
                                                                         <rect key="frame" x="5" y="5" width="333" height="19"/>
                                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
                                                                         <nil key="textColor"/>
@@ -4450,7 +4450,7 @@ Saturday's Video and Sunday's Video                           </string>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSi-xq-3my">
                                                                         <rect key="frame" x="0.0" y="29" width="343" height="56"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yCv-it-ywY" customClass="ICPasswordTextField" customModule="ICMA" customModuleProvider="target">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yCv-it-ywY" customClass="ICMobileNumberTextField" customModule="ICMA" customModuleProvider="target">
                                                                                 <rect key="frame" x="10" y="0.0" width="323" height="56"/>
                                                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4596,11 +4596,11 @@ Saturday's Video and Sunday's Video                           </string>
                         <outlet property="fNameView" destination="4Pt-nE-4cs" id="edx-GY-nLI"/>
                         <outlet property="imgProfile" destination="zZa-8t-xzA" id="2r5-Eo-ZZ6"/>
                         <outlet property="lNameView" destination="nyY-VM-WFl" id="63p-dR-QBf"/>
-                        <outlet property="pswrdView" destination="PSi-xq-3my" id="CDK-PN-yBb"/>
+                        <outlet property="mobileView" destination="PSi-xq-3my" id="r48-Id-Ekl"/>
                         <outlet property="txtEmail" destination="ouX-b8-dqq" id="U0k-P1-F9r"/>
                         <outlet property="txtFirstName" destination="mMG-ts-N8T" id="TFH-ty-9q3"/>
                         <outlet property="txtLastName" destination="fKV-kb-TPS" id="Ykk-vc-GF0"/>
-                        <outlet property="txtPswrd" destination="yCv-it-ywY" id="Yl3-e0-e4T"/>
+                        <outlet property="txtMobile" destination="yCv-it-ywY" id="KBs-Zx-PgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tef-fx-bO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
