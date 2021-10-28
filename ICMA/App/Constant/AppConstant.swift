@@ -42,7 +42,7 @@ struct ICMethods {
     static let getNotificationDetailById = "GetNotificationDetailById.php"
     
     
-    static let logOut = "logOut.php"
+    static let logout = "logout.php"
     static let getUserDetail = "getProfileDetails.php"
 //    static let forgotPassword = "forgotpassword.php"
     

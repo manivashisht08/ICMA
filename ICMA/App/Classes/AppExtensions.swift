@@ -414,5 +414,17 @@ extension UIViewController{
         return dateFormatter.string(from: date as Date)
     }
 }
+extension UIViewController {
+    func CustomAlert(title: String, message: String){
+
+
+        let myAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        myAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (actin) in
+            myAlert.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        }))
+         present(myAlert, animated: true, completion: nil)
+    }
+ }
 
 

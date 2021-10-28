@@ -44,6 +44,21 @@ class ContactVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         print(param)
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let header:HTTPHeaders = ["Token":token]
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.contactUs, params: param, headers: header) { (response) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            let msg = response["message"] as? String ?? ""
+            let status = response["status"] as? Int ?? 0
+            if status == 200 {
+
+                self.CustomAlert(title: kAppName.localized(), message: msg)
+            }
+        } failure: { (error) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(error)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+
     }
     
     //MARK: UITextFieldDelegate
@@ -107,7 +122,12 @@ class ContactVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     }
     
     @IBAction func btnSubmit(_ sender: Any) {
-        validate()
+        if validate() == false {
+            return
+        }
+        else{
+            contactUsApi()
+        }
     }
     
 }

@@ -47,6 +47,7 @@ class ProfileVC: UIViewController {
         }
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let header:HTTPHeaders = ["Token":token]
+        print(token)
         AFWrapperClass.requestGETURL(baseURL + ICMethods.getProfileDetail, params:nil, headers:header) { (response) in
             print(response)
             AFWrapperClass.svprogressHudDismiss(view: self)
@@ -85,6 +86,40 @@ class ProfileVC: UIViewController {
     
     @IBAction func btnBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+   //------------------------------------------------------
+  // Mark:- LogoutApi
+    
+    func logoutApi() {
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "", view: self)
+        }
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        let header:HTTPHeaders = ["Token":token]
+        print(header)
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.logout, params: [:], headers: header) { (response) in
+            print(response)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let msg = response["message"] as? String ?? ""
+            let status = response["status"] as? Int ?? 0
+            if status == 1 {
+                self.popActionAlert(title: kAppName.localized(), message: "Are you sure you want to log out from the app?", actionTitle: ["Ok","Cancel"], actionStyle: [.default , .cancel], action: [{ok in
+//                    AppDelegate.shared.logout()
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LogInVC") as! LogInVC
+                    self.navigationController?.pushViewController(vc, animated: true)
+//                    self.logoutApi()
+                    print("fff")
+                },{
+                    cancel in
+                }])
+            }
+            
+        } failure: { (error) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+
     }
 }
 extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
@@ -133,11 +168,14 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 5 {
                 self.popActionAlert(title: kAppName, message: "Are you sure you want to log out from the app?", actionTitle: ["Ok","Cancel"], actionStyle: [.default , .cancel], action : [{ok in
                     AppDelegate.shared.logout()
+//                    self.logoutApi()
                     print("fff")
                 },{
                     cancel in
                 }])
+//                self.logoutApi()
             }
+            
         }
     }
 }

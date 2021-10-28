@@ -42,16 +42,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
     }
     
-//    func logout() {
-//        UserDefaults.standard.removeObject(forKey: "id")
-//        UserDefaults.standard.removeObject(forKey: "authToken")
-//        UserDefaults.standard.removeObject(forKey: "deviceToken")
-//
-//        let homeViewController = LogInVC.instantiate(fromAppStoryboard: .Auth)
-//        let nav = UINavigationController.init(rootViewController: homeViewController)
-//        nav.isNavigationBarHidden = true
-//        AppDel().window?.rootViewController = nav
-//    }
+    //    func logout() {
+    //        UserDefaults.standard.removeObject(forKey: "id")
+    //        UserDefaults.standard.removeObject(forKey: "authToken")
+    //        UserDefaults.standard.removeObject(forKey: "deviceToken")
+    //
+    //        let homeViewController = LogInVC.instantiate(fromAppStoryboard: .Auth)
+    //        let nav = UINavigationController.init(rootViewController: homeViewController)
+    //        nav.isNavigationBarHidden = true
+    //        AppDel().window?.rootViewController = nav
+    //    }
     
     public func configureNavigationBar() {
         
@@ -73,14 +73,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
- 
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         configureKeboard()
         getCustomFontDetails()
         configureNavigationBar()
         setRootVC()
-
+//        logInDefaults()
+//         navigationApi()
         sleep(2)
         //        window?.tintColor = SSColor.appBlack
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.391271323, green: 0.1100022718, blue: 0.353789866, alpha: 1)
@@ -109,6 +110,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func logInDefaults(){
+        if let userId = UserDefaults.standard.value(forKey: "Uid") as? String{
+            if userId != ""{
+                let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+                let rootVc = storyBoard.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+                let nav = UINavigationController(rootViewController: rootVc)
+                nav.isNavigationBarHidden = true
+                self.window?.rootViewController = nav
+                self.window?.makeKeyAndVisible()
+            }else{
+                let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+                let rootVc = storyBoard.instantiateViewController(withIdentifier: "LogInVC") as! LogInVC
+                let nav = UINavigationController(rootViewController: rootVc)
+                nav.isNavigationBarHidden = true
+                self.window?.rootViewController = nav
+                self.window?.makeKeyAndVisible()
+            }
+        }
+    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.map { String(format: "%02x", $0) }.joined()
@@ -121,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return .portrait
     }
-
+    
     
 }
 extension AppDelegate {
@@ -139,7 +159,7 @@ extension AppDelegate {
             AppDel().window?.rootViewController = nav
         }
     }
-
+    
     func logout() {
         UserDefaults.standard.removeObject(forKey: "id")
         UserDefaults.standard.removeObject(forKey: "token")

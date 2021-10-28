@@ -50,7 +50,6 @@ class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         AFWrapperClass.requestPOSTURL(baseURL + ICMethods.addPrayer, params: param, headers: header) { (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
-            AFWrapperClass.svprogressHudDismiss(view: self)
             let msg = response["message"] as? String ?? ""
             let status = response["status"] as? Int ?? 0
             if status == 200 {
@@ -87,7 +86,6 @@ class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
             }
         }
        
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if txtViewPrayer.textColor == ICColor.appButton {
             txtViewPrayer.tintColor = ICColor.appButton
@@ -102,8 +100,6 @@ class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         viewPrayer.borderColor = ICColor.appBorder
     }
         
-        
-    
     func validate() -> Bool {
         
         if ValidationManager.shared.isEmpty(text: txtName.text) == true {
@@ -129,9 +125,7 @@ class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         
         return true
     }
-    
-    
-    
+
     @IBAction func btnCancel(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -143,8 +137,5 @@ class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         else{
             addPrayApi()
         }
-
     }
-    
-    
 }

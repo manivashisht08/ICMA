@@ -95,7 +95,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
                         UserDefaults.standard.set(access_token, forKey: "token")
                         let userId = data["userid"] as? String ?? ""
                         UserDefaults.standard.set(userId, forKey: "id")
-                        
+                        print(userId)
                     }
                     let controller = NavigationManager.shared.tabBarVC
                     self.push(controller: controller)
