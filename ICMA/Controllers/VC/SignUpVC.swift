@@ -43,7 +43,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title:"Loading...", view:self)
         }
-        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.signUp, params: generatingParameters(), headers: nil) { response in
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.signUp, params: generatingParameters(), headers: nil) { response in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             let message = response["message"] as? String ?? ""
@@ -78,6 +78,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
         print(parameters)
         return parameters
     }
+    
     //------------------------------------------------------
     
     //MARK: Customs

@@ -8,6 +8,8 @@
 import UIKit
 import Alamofire
 import SDWebImage
+import SafariServices
+
 
 class ProfileVC: UIViewController {
 
@@ -45,7 +47,7 @@ class ProfileVC: UIViewController {
         }
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let header:HTTPHeaders = ["Token":token]
-        AFWrapperClass.requestGETURL(baseURL + WSMethods.getProfileDetail, params:nil, headers:header) { (response) in
+        AFWrapperClass.requestGETURL(baseURL + ICMethods.getProfileDetail, params:nil, headers:header) { (response) in
             print(response)
             AFWrapperClass.svprogressHudDismiss(view: self)
             let data = response ["data"] as? [String:Any] ?? [:]
@@ -103,8 +105,23 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0{
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MembershipVC") as! MembershipVC
             self.navigationController?.pushViewController(vc, animated: true)
-
-        }else if indexPath.row == 3 {
+        }
+        else if indexPath.row == 1 {
+            if let url = URL(string:baseURL + ICMethods.aboutUs)
+                    {
+                        let safariCC = SFSafariViewController(url: url)
+                        present(safariCC, animated: true, completion: nil)
+                    }
+        }
+        else if indexPath.row == 2 {
+            if let url = URL(string:baseURL + ICMethods.blogs)
+                    {
+                        let safariCC = SFSafariViewController(url: url)
+                        present(safariCC, animated: true, completion: nil)
+                    }
+        }
+        
+        else if indexPath.row == 3 {
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactVC") as! ContactVC
             self.navigationController?.pushViewController(vc, animated: true)
         }

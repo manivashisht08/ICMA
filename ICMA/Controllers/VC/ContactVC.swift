@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import IQKeyboardManagerSwift
+import Alamofire
 
 class ContactVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -33,7 +34,17 @@ class ContactVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         txtEmail.delegate = self
         txtMsg.delegate = self
         
-    } 
+    }
+    
+    func contactUsApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
+        }
+        let param = ["name":txtName.text! , "email":txtEmail.text!, "message":txtMsg.text!] as [String:Any]
+        print(param)
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        let header:HTTPHeaders = ["Token":token]
+    }
     
     //MARK: UITextFieldDelegate
     func textFieldDidBeginEditing(_ textField: UITextField) {

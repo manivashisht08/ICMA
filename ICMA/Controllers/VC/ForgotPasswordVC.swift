@@ -61,7 +61,7 @@ class ForgotPasswordVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     
     func forgotPasswordApi(email : String){
         AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
-        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.forgotPassword, params: prm(), headers: nil) { (response) in
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.forgotPassword, params: prm(), headers: nil) { (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             let message = response["message"] as? String ?? ""

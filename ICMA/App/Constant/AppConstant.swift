@@ -16,15 +16,18 @@ let appDel = (UIApplication.shared.delegate as! AppDelegate)
 
 
 
-struct WSMethods {
+struct ICMethods {
     static let signIn = "login.php"
     static let signUp = "signup.php"
     static let forgotPassword = "forgotpassword.php"
     static let getProfileDetail = "getprofiledetail.php"
     static let editProfile = "editprofile.php"
     static let getPrayers = "getprayers.php"
-    static let resentVerficationEmail = "ResentVerficationEmail.php"
-    static let addBiWeeklyInventory = "AddBiWeeklyInventory.php"
+    static let addPrayer = "addprayer.php"
+    static let aboutUs = "aboutUs.html"
+    static let blogs = "Blogs.html"
+    static let privacyPolicy = "PrivacyPolicy.html"
+    static let contactUs =  "contactus.php"
     static let getAllProduct = "GetAllProduct.php"
     static let addProduct = "AddProduct.php"
     static let getAllIngredient = "GetAllIngredient.php"

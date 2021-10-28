@@ -26,8 +26,8 @@ class PrayerVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         page = 1
-        PrayerArray.removeAll()
-        addPrayApi()
+        getPrayApi()
+        self.tblPrayer.reloadData()
     }
     
     @IBAction func btnAdd(_ sender: Any) {
@@ -65,7 +65,7 @@ extension PrayerVC : UITableViewDelegate , UITableViewDataSource{
     }
     func updateNextSet(){
         page = page + 1
-        addPrayApi()
+        getPrayApi()
     }
 }
 struct PrayerData {
@@ -82,7 +82,7 @@ struct PrayerData {
 
 extension PrayerVC {
     
-    func addPrayApi(){
+    func getPrayApi(){
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
         }
@@ -92,24 +92,24 @@ extension PrayerVC {
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let header:HTTPHeaders = ["Content-Type":"application/json","token":token]
         print(header)
-        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.getPrayers, params: param, headers: header) { (response) in
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.getPrayers, params: param, headers: header) { (response) in
             print(response)
-            print(baseURL + WSMethods.getPrayers)
+            print(baseURL + ICMethods.getPrayers)
             AFWrapperClass.svprogressHudDismiss(view: self)
             let msg = response["message"] as? String ?? ""
             let status = response ["status"] as? Int ?? 0
             self.lastPage = response["lastPage"] as? String ?? "false"
             if status == 1{
                 if let result = response as? [String:Any] {
+                    self.PrayerArray.removeAll()
                     if let dataDict = result["data"] as? [[String:Any]]{
                         print(dataDict)
+                        self.PrayerArray.removeAll()
                         for i in 0..<dataDict.count{
                             let time = Double(dataDict[i]["creation_at"] as? String ?? "") ?? 0.0
                             let timeString = self.timeStringFromUnixTime(unixTime: time)
                             self.prayerGet.append(getPrayerModel(id: dataDict[i]["id"] as? String ?? "", name: dataDict[i]["name"] as? String ?? "", userid: dataDict[i]["userid"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", detail: dataDict[i]["detail"] as? String ?? "", creation_at: timeString))
                         }
-                        //  self.tblPrayer.reloadData()
-                        
                     }
                 }
                 
@@ -122,7 +122,7 @@ extension PrayerVC {
             AFWrapperClass.svprogressHudDismiss(view: self)
             alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
         }
-        
+        self.tblPrayer.reloadData()
     }
     
 }

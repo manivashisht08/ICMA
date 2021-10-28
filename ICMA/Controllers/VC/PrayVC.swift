@@ -8,6 +8,8 @@
 import UIKit
 import Foundation
 import IQKeyboardManagerSwift
+import Alamofire
+import SafariServices
 
 class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -36,21 +38,31 @@ class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         txtViewPrayer.delegate = self
         
     }
-//
-//    func addPrayApi(name:String,title:String, detail:String ){
-//        let params = ["name":txtName.text!, "title":txtRequest.text! , "detail":txtViewPrayer.text!]
-//        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.addPrayer, params: params, headers: nil) { (response) in
-//            AFWrapperClass.svprogressHudDismiss(view: self)
-//            print(response)
-//
-//        } failure: { (error) in
-//            AFWrapperClass.svprogressHudDismiss(view: self)
-//            print(error)
-//            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
-//        }
-//
-//
-//    }
+
+    func addPrayApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
+        }
+        let param = ["name":txtName.text!,"title":txtRequest.text!,"detail": txtViewPrayer.text! ] as [String : Any]
+        print(param)
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        let header:HTTPHeaders = ["Content-Type":"application/json","Token":token]
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.addPrayer, params: param, headers: header) { (response) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let msg = response["message"] as? String ?? ""
+            let status = response["status"] as? Int ?? 0
+            if status == 200 {
+                self.navigationController?.popViewController(animated: true)
+            }
+        } failure: { (error) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(error)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+
+    }
     
     //MARK: UITextFieldDelegate
     
@@ -125,8 +137,13 @@ class PrayVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     }
     
     @IBAction func btnSubmit(_ sender: Any) {
-//        validate()
-//        addPrayApi(name: "txtName", title: "txtRequest", detail: "txtViewPrayer")
+        if validate() == false {
+            return
+        }
+        else{
+            addPrayApi()
+        }
+
     }
     
     

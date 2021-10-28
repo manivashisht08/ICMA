@@ -57,7 +57,7 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let userId = UserDefaults.standard.string(forKey: "id") ?? ""
         let header:HTTPHeaders = ["token":token]
-        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.editProfile, params: generatingParameters(), headers: header) { (response) in
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.editProfile, params: generatingParameters(), headers: header) { (response) in
             print(response)
             AFWrapperClass.svprogressHudDismiss(view: self)
             let msg = response["message"] as? String ?? ""
@@ -82,7 +82,7 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
         }
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let userId = UserDefaults.standard.string(forKey: "id") ?? ""
-        let url = baseURL + WSMethods.editProfile
+        let url = baseURL + ICMethods.editProfile
         var params = [String:Any]()
         params = ["user_id":userId,"firstname":txtFirstName.text!,"lastname":txtLastName.text!,"phone":txtMobile.text!,"password":""]
         let header:HTTPHeaders = ["token":token]
@@ -169,8 +169,6 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
             
             return false
         }
-        
-        
         
         return true
     }

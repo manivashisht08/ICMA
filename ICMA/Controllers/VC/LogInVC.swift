@@ -78,7 +78,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
             AFWrapperClass.svprogressHudShow(title:"Loading...", view:self)
         }
         
-        AFWrapperClass.requestPOSTURL(baseURL + WSMethods.signIn, params: generatingParameters(), headers: nil) { response in
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.signIn, params: generatingParameters(), headers: nil) { response in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             let message = response["message"] as? String ?? ""
@@ -125,7 +125,7 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     //    open func resendEmailVerificationApi(){
     //
     //
-    //        guard let url = URL(string: kBASEURL + WSMethods.resentVerficationEmail) else { return }
+    //        guard let url = URL(string: kBASEURL + ICMethods.resentVerficationEmail) else { return }
     //
     //        rest.requestHttpHeaders.add(value: "application/json", forKey: "Content-Type")
     //        rest.httpBodyParameters.add(value:txtEmail.text ?? "", forKey:"email")
