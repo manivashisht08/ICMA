@@ -14,7 +14,7 @@ class PrayerVC: UIViewController {
     var prayerGet = [getPrayerModel]()
     
     @IBOutlet weak var tblPrayer: UITableView!
-    var PrayerArray = [PrayerData]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tblPrayer.dataSource = self
@@ -27,7 +27,7 @@ class PrayerVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         page = 1
         getPrayApi()
-        self.tblPrayer.reloadData()
+//        self.tblPrayer.reloadData()
     }
     
     @IBAction func btnAdd(_ sender: Any) {
@@ -101,14 +101,16 @@ extension PrayerVC {
             self.lastPage = response["lastPage"] as? String ?? "false"
             if status == 1{
                 if let result = response as? [String:Any] {
-                    self.PrayerArray.removeAll()
                     if let dataDict = result["data"] as? [[String:Any]]{
                         print(dataDict)
-                        self.PrayerArray.removeAll()
                         for i in 0..<dataDict.count{
                             let time = Double(dataDict[i]["creation_at"] as? String ?? "") ?? 0.0
+                           
                             let timeString = self.timeStringFromUnixTime(unixTime: time)
                             self.prayerGet.append(getPrayerModel(id: dataDict[i]["id"] as? String ?? "", name: dataDict[i]["name"] as? String ?? "", userid: dataDict[i]["userid"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", detail: dataDict[i]["detail"] as? String ?? "", creation_at: timeString))
+                            
+//                            self.prayerGet =  self.prayerGet.sorted(by: { $0.creation_at > $1.creation_at })
+
                         }
                     }
                 }

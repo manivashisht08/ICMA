@@ -166,14 +166,14 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
         }
         else{
             if indexPath.row == 5 {
-                self.popActionAlert(title: kAppName, message: "Are you sure you want to log out from the app?", actionTitle: ["Ok","Cancel"], actionStyle: [.default , .cancel], action : [{ok in
-                    AppDelegate.shared.logout()
-//                    self.logoutApi()
-                    print("fff")
-                },{
-                    cancel in
-                }])
-//                self.logoutApi()
+//                self.popActionAlert(title: kAppName, message: "Are you sure you want to log out from the app?", actionTitle: ["Ok","Cancel"], actionStyle: [.default , .cancel], action : [{ok in
+//                    AppDelegate.shared.logout()
+////                    self.logoutApi()
+//                    print("fff")
+//                },{
+//                    cancel in
+//                }])
+                self.logoutApi()
             }
             
         }
