@@ -51,7 +51,8 @@ extension NotificationsVC : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationsTVCell", for: indexPath) as! NotificationsTVCell
         let notify = notificationModel[indexPath.row]
-//        cell.imgMain.image = UIImage(named: notificationModel[indexPath.row].image)
+        cell.imgMain.image = UIImage(named: notificationModel[indexPath.row].image)
+        cell.imgMain.sd_setImage(with: URL(string: notificationModel[indexPath.row].image), placeholderImage: UIImage(named: "placehldr"))
         cell.imgMain.setRounded()
         cell.lblDetail.text = notify.message
         cell.lblDate.text = notify.creation_at
@@ -100,7 +101,7 @@ extension NotificationsVC{
                         for i in 0..<dataDict.count{
                             let time = Double(dataDict[i]["creation_at"] as? String ?? "") ?? 0.0
                             let timeString = self.convertTimeStampToDate(dateVal: time)
-                            self.notificationModel.append(notificationListingModel(notification_id: dataDict[i]["notification_id"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", message: dataDict[i]["message"] as? String ?? "", userid: dataDict[i]["userid"] as? String ?? "", notification_type: dataDict[i]["notification_type"] as? String ?? "", creation_at: timeString))
+                            self.notificationModel.append(notificationListingModel(notification_id: dataDict[i]["notification_id"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", message: dataDict[i]["message"] as? String ?? "", userid: dataDict[i]["userid"] as? String ?? "", notification_type: dataDict[i]["notification_type"] as? String ?? "", creation_at: timeString,name: dataDict[i]["name"] as? String ?? "" , image: dataDict[i]["image"] as? String ?? ""))
                         }
                     }
                 }

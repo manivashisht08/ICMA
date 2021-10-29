@@ -70,7 +70,6 @@ class DFHSTherapyVC: UIViewController {
 extension DFHSTherapyVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DFTherapyTVCell", for: indexPath) as! DFTherapyTVCell
-//        cell.mainImg.image = UIImage(named: videoListing[indexPath.row].video_thumbnail)
         cell.mainImg.sd_setImage(with: URL(string: videoListing[indexPath.row].video_thumbnail), placeholderImage: UIImage(named: "placehldr"))
         cell.lblDetails.text = videoListing[indexPath.row].title
         cell.lblTime.text = videoListing[indexPath.row].creation_at

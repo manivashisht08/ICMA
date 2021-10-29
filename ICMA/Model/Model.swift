@@ -32,13 +32,17 @@ struct notificationListingModel {
     var userid = String()
     var notification_type = String()
     var creation_at = String()
-    init(notification_id : String, title:String,message : String, userid:String, notification_type:String, creation_at:String ) {
+    var name = String()
+    var image = String()
+    init(notification_id : String, title:String,message : String, userid:String, notification_type:String, creation_at:String, name:String, image:String ) {
         self.notification_id = notification_id
         self.title = title
         self.message = message
         self.userid = userid
         self.notification_type = notification_type
         self.creation_at = creation_at
+        self.name = name
+        self.image = image
     }
 }
 
@@ -70,3 +74,48 @@ struct videoListingModel {
     }
 }
 
+struct AudioModel {
+    let subcategoryName: String?
+    let audioDataModel: [audioVideoListingModel]
+    init(subcategoryName:String,audioDataModel:[audioVideoListingModel]) {
+        self.subcategoryName = subcategoryName
+        self.audioDataModel = audioDataModel
+    }
+}
+
+struct audioVideoListingModel {
+    var id:String?
+    var title:String?
+    var audio :String?
+    var start_time :String?
+    var end_time :String?
+    var audio_thumbnail :String?
+    var subcategory_id :String?
+    var categoryid :String?
+    var creation_at :String?
+    init(id : String, title:String,audio : String,  start_time:String, end_time:String ,audio_thumbnail:String,subcategory_id:String,creation_at : String, categoryid:String ) {
+        self.id = id
+        self.title = title
+        self.audio = audio
+        self.start_time = start_time
+        self.end_time = end_time
+        self.categoryid = categoryid
+        self.audio_thumbnail = audio_thumbnail
+        self.subcategory_id = subcategory_id
+        self.creation_at = creation_at
+        
+    }
+    
+    func time()->String{
+        let timeString = self.timeStringFromUnixTimeOnly(unixTime: Double(creation_at ?? "0.0") ?? 0.0)
+        return timeString
+    }
+    
+    func timeStringFromUnixTimeOnly(unixTime: Double) -> String {
+        let date = NSDate(timeIntervalSince1970: unixTime)
+        let dateFormatter = DateFormatter()
+        // Returns date formatted as 12 hour time.
+        dateFormatter.dateFormat = "hh:mm"
+        return dateFormatter.string(from: date as Date)
+    }
+}

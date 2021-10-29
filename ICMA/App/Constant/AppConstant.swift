@@ -24,12 +24,15 @@ struct ICMethods {
     static let editProfile = "editprofile.php"
     static let getPrayers = "getprayers.php"
     static let addPrayer = "addprayer.php"
+    static let logout = "logout.php"
     static let aboutUs = "aboutUs.html"
     static let blogs = "Blogs.html"
     static let privacyPolicy = "PrivacyPolicy.html"
     static let contactUs =  "contactus.php"
     static let notificationListing = "notificationListing.php"
     static let videoListing = "videoListing.php"
+    static let audioVideoListing = "audiovideoListing.php"
+    
     
     
     static let getAllProduct = "GetAllProduct.php"
@@ -46,7 +49,7 @@ struct ICMethods {
     static let getNotificationDetailById = "GetNotificationDetailById.php"
     
     
-    static let logout = "logout.php"
+  
     static let getUserDetail = "getProfileDetails.php"
 //    static let forgotPassword = "forgotpassword.php"
     
