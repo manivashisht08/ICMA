@@ -25,3 +25,48 @@ struct getPrayerModel {
         self.creation_at = creation_at
     }
 }
+struct notificationListingModel {
+    var notification_id = String()
+    var title = String()
+    var message = String()
+    var userid = String()
+    var notification_type = String()
+    var creation_at = String()
+    init(notification_id : String, title:String,message : String, userid:String, notification_type:String, creation_at:String ) {
+        self.notification_id = notification_id
+        self.title = title
+        self.message = message
+        self.userid = userid
+        self.notification_type = notification_type
+        self.creation_at = creation_at
+    }
+}
+
+struct videoListingModel {
+    var id = String()
+    var title = String()
+    var video = String()
+    var name = String()
+    var start_time = String()
+    var end_time = String()
+    var video_width = String()
+    var video_height = String()
+    var video_thumbnail = String()
+    var subcategory = String()
+    var creation_at = String()
+    init(id : String, title:String,video : String, name:String, start_time:String, end_time:String, video_width:String, video_height:String,video_thumbnail:String,subcategory:String,creation_at : String ) {
+        self.id = id
+        self.title = title
+        self.video = video
+        self.name = name
+        self.start_time = start_time
+        self.end_time = end_time
+        self.video_width = video_width
+        self.video_height = video_height
+        self.video_thumbnail = video_thumbnail
+        self.subcategory = subcategory
+        self.creation_at = creation_at
+        
+    }
+}
+

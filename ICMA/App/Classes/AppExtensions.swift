@@ -426,5 +426,14 @@ extension UIViewController {
          present(myAlert, animated: true, completion: nil)
     }
  }
+extension UIViewController{
+    func timeStringFromUnixTimeOnly(unixTime: Double) -> String {
+        let date = NSDate(timeIntervalSince1970: unixTime)
+        let dateFormatter = DateFormatter()
+        // Returns date formatted as 12 hour time.
+        dateFormatter.dateFormat = "hh:mm"
+        return dateFormatter.string(from: date as Date)
+    }
+}
 
 

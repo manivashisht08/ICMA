@@ -28,6 +28,10 @@ struct ICMethods {
     static let blogs = "Blogs.html"
     static let privacyPolicy = "PrivacyPolicy.html"
     static let contactUs =  "contactus.php"
+    static let notificationListing = "notificationListing.php"
+    static let videoListing = "videoListing.php"
+    
+    
     static let getAllProduct = "GetAllProduct.php"
     static let addProduct = "AddProduct.php"
     static let getAllIngredient = "GetAllIngredient.php"
