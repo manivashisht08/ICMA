@@ -11,6 +11,7 @@ import Alamofire
 class PrayerVC: UIViewController {
     var page = 1
     var lastPage = "false"
+    
     var prayerGet = [getPrayerModel]()
     
     @IBOutlet weak var tblPrayer: UITableView!
@@ -110,9 +111,9 @@ extension PrayerVC {
                             
                             self.prayerGet.append(getPrayerModel(id: dataDict[i]["id"] as? String ?? "", name: dataDict[i]["name"] as? String ?? "", userid: dataDict[i]["userid"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", detail: dataDict[i]["detail"] as? String ?? "", creation_at: timeString))
                         
-                            self.tblPrayer.beginUpdates()
-                            self.tblPrayer.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .top)
-                            self.tblPrayer.endUpdates()
+//                            self.tblPrayer.beginUpdates()
+//                            self.tblPrayer.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .top)
+//                            self.tblPrayer.endUpdates()
                         }
                     }
                 }

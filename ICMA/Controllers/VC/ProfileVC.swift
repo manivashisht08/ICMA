@@ -31,7 +31,8 @@ class ProfileVC: UIViewController {
         self.ProfileArray.append(ProfileData(image: ICImageName.iconMember, details: "Membership"))
         self.ProfileArray.append(ProfileData(image: ICImageName.iconAbout, details: "About Us"))
         self.ProfileArray.append(ProfileData(image: ICImageName.iconBlog, details: "Blog"))
-        self.ProfileArray.append(ProfileData(image: ICImageName.iconContact, details: "Contact")) 
+        self.ProfileArray.append(ProfileData(image: ICImageName.iconContact, details: "Contact"))
+        self.ProfileArray.append(ProfileData(image: ICImageName.iconChange, details: "Change Password"))
         self.ProfileArray.append(ProfileData(image: ICImageName.iconRefer, details: "Refer a Friend")) 
         self.ProfileArray.append(ProfileData(image: ICImageName.iconLogout, details: "Logout")) 
     }
@@ -159,26 +160,29 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
         else if indexPath.row == 3 {
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactVC") as! ContactVC
             self.navigationController?.pushViewController(vc, animated: true)
+        }else if indexPath.row == 4 {
+            
         }
-        else if indexPath.row == 4 {
+        
+        else if indexPath.row == 5 {
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ReferFriendVC") as! ReferFriendVC
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else{
-            if indexPath.row == 5 {
-//                self.popActionAlert(title: kAppName, message: "Are you sure you want to log out from the app?", actionTitle: ["Ok","Cancel"], actionStyle: [.default , .cancel], action : [{ok in
-//                    AppDelegate.shared.logout()
-////                    self.logoutApi()
-//                    print("fff")
-//                },{
-//                    cancel in
-//                }])
-                self.logoutApi()
+            if indexPath.row == 6 {
+                self.popActionAlert(title: kAppName, message: "Are you sure you want to log out from the app?", actionTitle: ["Ok","Cancel"], actionStyle: [.default , .cancel], action : [{ok in
+                    AppDelegate.shared.logout()
+//                    self.logoutApi()
+                    print("fff")
+                },{
+                    cancel in
+                }])
+//                self.logoutApi()
             }
             
         }
     }
-}
+
 
 struct ProfileData {
     var image : String
@@ -191,3 +195,4 @@ struct ProfileData {
     }
 }
 
+}

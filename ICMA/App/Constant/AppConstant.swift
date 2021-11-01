@@ -32,6 +32,7 @@ struct ICMethods {
     static let notificationListing = "notificationListing.php"
     static let videoListing = "videoListing.php"
     static let audioVideoListing = "audiovideoListing.php"
+    static let searchListing  = "search.php"
     
     
     

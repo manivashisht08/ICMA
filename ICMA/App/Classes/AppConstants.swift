@@ -113,6 +113,7 @@ struct ICImageName {
     static let iconLogout = "logout"
     static let iconMember = "member"
     static let iconRefer = "refer"
+    static let iconChange  = "change"
 }
 
 struct ICScreenName {

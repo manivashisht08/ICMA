@@ -58,13 +58,9 @@ class DFHSTherapyVC: UIViewController {
     }
     
     @IBAction func btnMainImg(_ sender: Any) {
-//        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DevotionalVC") as! DevotionalVC
-//        vc.modalPresentationStyle = .overFullScreen
-//        self.present(vc, animated: true, completion: nil)
+
         bottomSheetView()
-//        let vc = DevotionalVC.instantiate(fromAppStoryboard: .Setting)
-//              vc.modalPresentationStyle = .overFullScreen
-//              self.present(vc, animated: true, completion: nil)
+
     }
 }
 extension DFHSTherapyVC : UITableViewDelegate , UITableViewDataSource {

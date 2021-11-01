@@ -354,7 +354,7 @@ extension UILabel {
         self.attributedText = string
     }
     
-    func addLeading(image: UIImage, text:String) {
+    func addLeading(image:UIImage, text:  String) {
         let attachment = NSTextAttachment()
         attachment.image = image
         
@@ -363,7 +363,7 @@ extension UILabel {
         mutableAttributedString.append(attachmentString)
         
         let string = NSMutableAttributedString(string: text, attributes: [:])
-        mutableAttributedString.append(string)
+        mutableAttributedString.append( string)
         self.attributedText = mutableAttributedString
     }
 }

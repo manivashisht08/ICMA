@@ -120,3 +120,37 @@ struct audioVideoListingModel {
         return dateFormatter.string(from: date as Date)
     }
 }
+
+struct searchListingModel {
+    var id  = String()
+    var title = String()
+    var video = String()
+    var name = String()
+    var start_time = String()
+    var end_time = String()
+    var video_width  = String()
+    var video_height = String()
+    var video_thumbnail = String()
+    var subcategory = String()
+    var creation_at = String()
+    var type = String()
+    var link = String()
+    var audio_thumbnail = String()
+    
+    init(id:String,title : String,video:String, name:String,start_time:String,end_time:String,video_width:String,video_height:String,video_thumbnail:String,subcategory:String,creation_at:String,type:String,link:String,audio_thumbnail:String) {
+        self.id = id
+        self.title = title
+        self.video = video
+        self.name = name
+        self.start_time = start_time
+        self.end_time = end_time
+        self.video_width = video_width
+        self.video_height = video_height
+        self.video_thumbnail = video_thumbnail
+        self.subcategory = subcategory
+        self.creation_at = creation_at
+        self.type = type
+        self.link = link
+        self.audio_thumbnail = audio_thumbnail
+    }
+}

@@ -31,8 +31,10 @@ class BreathingTVCell: UITableViewCell {
     
     func details(){
         self.profileImg.sd_setImage(with: URL(string: detailsArr?.audio_thumbnail ?? ""), placeholderImage: UIImage(named: "placehldr"))
-        lblName.addLeading(image: #imageLiteral(resourceName: "music"), text: detailsArr?.title ?? "")
-        lblTime.addLeading(image: #imageLiteral(resourceName: "clock"), text: detailsArr?.time() ?? "")
+        lblName.addLeading(image: #imageLiteral(resourceName: "music") , text: " \(detailsArr?.title ?? "")")
+        lblTime.addLeading(image: #imageLiteral(resourceName: "clock") , text: " \(detailsArr?.time() ?? "")")
+//        lblName.text =  detailsArr?.title ?? ""
+//        lblTime.text =  detailsArr?.time() ?? ""
     }
     
 }
