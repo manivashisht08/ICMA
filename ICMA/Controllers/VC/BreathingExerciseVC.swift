@@ -116,7 +116,7 @@ extension BreathingExerciseVC {
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
         }
-        let param = ["categoryid" : "2"] as [String : Any]
+        let param = ["categoryid" : "1"] as [String : Any]
         print(param)
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let header:HTTPHeaders = ["token":token]
@@ -140,6 +140,7 @@ extension BreathingExerciseVC {
                         var audioDt = [audioVideoListingModel]()
                         for obj in dataDict{
                             var dtDict = obj["data"] as? [NSDictionary] ?? [NSDictionary]()
+                            print (dtDict)
                             for obj2 in dtDict{
                                 audioDt.append(audioVideoListingModel.init(id: obj2["id"] as? String ?? "",
                                                                            title: obj2["title"] as? String ?? "",

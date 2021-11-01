@@ -25,6 +25,7 @@ struct getPrayerModel {
         self.creation_at = creation_at
     }
 }
+
 struct notificationListingModel {
     var notification_id = String()
     var title = String()

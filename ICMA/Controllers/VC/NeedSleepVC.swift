@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Alamofire
 
 class NeedSleepVC: UIViewController {
+
+    var audioVideoListing = [AudioModel]()
 
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblDetail: ICMediumLabel!
@@ -23,54 +26,34 @@ class NeedSleepVC: UIViewController {
         tblSleep.delegate = self
         tblSleep.separatorStyle = .none
        
+        needSleepApi()
+        
         tblSleep.register(UINib(nibName: "BreathingTVCell", bundle: nil), forCellReuseIdentifier: "BreathingTVCell")
       
-        self.SleepingArray.append(SleepingData(image: "img1", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  4-5 min"))
-        self.SleepingArray.append(SleepingData(image: "img2", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  3-7 min"))
-        self.SleepingArray.append(SleepingData(image: "img3", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
-        self.SleepingArray.append(SleepingData(image: "img4", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-3 min"))
+//        self.SleepingArray.append(SleepingData(image: "img1", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  4-5 min"))
+//        self.SleepingArray.append(SleepingData(image: "img2", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  3-7 min"))
+//        self.SleepingArray.append(SleepingData(image: "img3", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
+//        self.SleepingArray.append(SleepingData(image: "img4", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-3 min"))
 
     }
     
 }
 extension NeedSleepVC : UITableViewDelegate , UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return section.count
+        return audioVideoListing.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return SleepingArray.count
-        }else {
-            return SleepingArray.count
-        }
+        audioVideoListing[section].audioDataModel.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0{
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BreathingTVCell.self)) as? BreathingTVCell {
-            cell.profileImg.image = UIImage(named: SleepingArray[indexPath.row].image)
-            cell.lblName.text = SleepingArray[indexPath.row].details
-            cell.lblTime.text = SleepingArray[indexPath.row].time
-            cell.lblName.addLeading(image: #imageLiteral(resourceName: "music"), text: SleepingArray[indexPath.row].details)
-            cell.lblTime.addLeading(image: #imageLiteral(resourceName: "clock"), text: SleepingArray[indexPath.row].time)
+            cell.detailsArr = audioVideoListing[indexPath.section].audioDataModel[indexPath.row]
             DispatchQueue.main.async {
                 self.heightConstraint.constant = self.tblSleep.contentSize.height
             }
-
-            return cell
-        }
-            return UITableViewCell()
-        }else{
-            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BreathingTVCell.self)) as? BreathingTVCell {
-                cell.profileImg.image = UIImage(named: SleepingArray[indexPath.row].image)
-                cell.lblName.text = SleepingArray[indexPath.row].details
-                cell.lblTime.text = SleepingArray[indexPath.row].time
-                DispatchQueue.main.async {
-                    self.heightConstraint.constant = self.tblSleep.contentSize.height
-                }
             return cell
         }
         return UITableViewCell()
-    }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let view: ProfileViewForTitle = UIView.fromNib()
@@ -111,5 +94,55 @@ struct SleepingData {
         self.details = details
         self.time = time
      
+    }
+}
+
+extension NeedSleepVC {
+    func needSleepApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
+        }
+        let param = ["categoryid" : "2"] as [String : Any]
+        print(param)
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        let header:HTTPHeaders = ["token":token]
+        print(header)
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.audioVideoListing, params: param, headers: header) { (response) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let msg = response["message"] as? String ?? ""
+            let status = response["status"] as? Int ?? 0
+            if status == 1 {
+                let data = response["video"] as? [String : Any] ?? [:]
+                let time = Double(data["creation_at"] as? String ?? "") ?? 0.0
+                let timeString = self.timeStringFromUnixTimeOnly(unixTime: time)
+                self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placehldr"))
+                self.lblDetail.text = data["category_name"] as? String ?? ""
+                self.lblTime.text = timeString
+                
+                if let result = response as? [String:Any]{
+                    if let dataDict = result["audio"] as? [[String:Any]]{
+                        var audioDt = [audioVideoListingModel]()
+                        for obj in dataDict{
+                            var dtDict = obj["data"] as? [NSDictionary] ?? [NSDictionary]()
+                            print (dtDict)
+                            for obj2 in dtDict{
+                                audioDt.append(audioVideoListingModel.init(id: obj2["id"] as? String ?? "", title: obj2["title"] as? String ?? "", audio: obj2["audio"] as? String ?? "" , start_time: obj2["start_time"] as? String ?? "", end_time: obj2["end_time"] as? String ?? "", audio_thumbnail: obj2["audio_thumbnail"] as? String ?? "",subcategory_id: obj2["subcategory_id"] as? String ?? "",creation_at: obj2["creation_at"] as? String ?? "", categoryid: obj2["categoryid"] as? String ?? ""))
+                            }
+                            
+                            self.audioVideoListing.append(AudioModel.init(subcategoryName: obj["subcategory_name"] as? String ?? "", audioDataModel: audioDt))
+                            
+                        }
+                    }
+                }
+                
+            }else {
+                alert(kAppName, message: msg, view: self)
+            }
+            self.tblSleep.reloadData()
+        } failure: { (error) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+
     }
 }

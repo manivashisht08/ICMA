@@ -107,10 +107,12 @@ extension PrayerVC {
                             let time = Double(dataDict[i]["creation_at"] as? String ?? "") ?? 0.0
                            
                             let timeString = self.timeStringFromUnixTime(unixTime: time)
-                            self.prayerGet.append(getPrayerModel(id: dataDict[i]["id"] as? String ?? "", name: dataDict[i]["name"] as? String ?? "", userid: dataDict[i]["userid"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", detail: dataDict[i]["detail"] as? String ?? "", creation_at: timeString))
                             
-//                            self.prayerGet =  self.prayerGet.sorted(by: { $0.creation_at > $1.creation_at })
-
+                            self.prayerGet.append(getPrayerModel(id: dataDict[i]["id"] as? String ?? "", name: dataDict[i]["name"] as? String ?? "", userid: dataDict[i]["userid"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", detail: dataDict[i]["detail"] as? String ?? "", creation_at: timeString))
+                        
+                            self.tblPrayer.beginUpdates()
+                            self.tblPrayer.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .top)
+                            self.tblPrayer.endUpdates()
                         }
                     }
                 }
