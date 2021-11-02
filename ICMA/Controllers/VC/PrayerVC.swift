@@ -27,6 +27,7 @@ class PrayerVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         page = 1
+        self.prayerGet.removeAll()
         getPrayApi()
 //        self.tblPrayer.reloadData()
     }
@@ -119,8 +120,10 @@ extension PrayerVC {
                 }
                 
             }else{
+                if self.prayerGet.count == 0{
                 alert(kAppName, message: msg, view: self)
                 // self.prayerGet.removeAll()
+                }else{}
             }
             self.tblPrayer.reloadData()
         } failure: { (error) in

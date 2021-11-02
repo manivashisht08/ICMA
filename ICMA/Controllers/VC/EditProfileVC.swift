@@ -9,9 +9,14 @@ import UIKit
 import Toucan
 import IQKeyboardManagerSwift
 import Alamofire
+protocol EditProfileProtocol {
+    func editProfile(fromEdit:Bool)
+}
 
 class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, ImagePickerDelegate  {
     var imageData = Data()
+    var delegate:EditProfileProtocol?
+    
     @IBOutlet weak var txtMobile: ICMobileNumberTextField!
     @IBOutlet weak var mobileView: UIView!
     @IBOutlet weak var txtEmail: ICEmailTextField!
@@ -76,6 +81,7 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
         }
         
     }
+    
     func editProfileApis()  {
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "", view: self)
@@ -84,17 +90,17 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
         let userId = UserDefaults.standard.string(forKey: "id") ?? ""
         let url = baseURL + ICMethods.editProfile
         var params = [String:Any]()
-        params = ["user_id":userId,"firstname":txtFirstName.text!,"lastname":txtLastName.text!,"phone":txtMobile.text!,"password":""]
-        let header:HTTPHeaders = ["token":token]
+        params = ["firstname":txtFirstName.text!,"lastname":txtLastName.text!,"phone":txtMobile.text!,"password":"123456"]
+        print (params)
         AF.upload(multipartFormData: { (multipartFormData) in
             
-            multipartFormData.append(self.imageData, withName: "profileimage", fileName: "profileimage", mimeType: "")
+            multipartFormData.append(self.imageData, withName: "profileimage", fileName: "profileimage", mimeType: ".jpg")
             
             for (key, value) in params {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
             }
             
-        }, to: url, usingThreshold: UInt64.init(), method: .post, headers: header, interceptor: nil, fileManager: .default)
+        }, to: url, usingThreshold: UInt64.init(), method: .post, headers: ["token":token], interceptor: nil, fileManager: .default)
         .uploadProgress(closure: { (progress) in
             print("Upload Progress: \(progress.fractionCompleted)")
         })
@@ -108,6 +114,7 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
                         let message = dataDict["message"] as? String ?? ""
                         let status = JSON["status"] as? Int ?? 0
                         if status == 1{
+                            self.delegate?.editProfile(fromEdit: true)
                             self.navigationController?.popViewController(animated: true)
                         }else{
                             //  self.Alert(message: message)
@@ -148,20 +155,20 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
             
             return false
         }
-        
-        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
-            showAlertMessage(title: kAppName.localized(), message: "Please enter email address." , okButton: "Ok", controller: self) {
-            }
-            
-            return false
-        }
-        
-        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
-            showAlertMessage(title: kAppName.localized(), message: "Please enter valid email address." , okButton: "Ok", controller: self) {
-            }
-            
-            return false
-        }
+//        
+//        if ValidationManager.shared.isEmpty(text: txtEmail.text) == true {
+//            showAlertMessage(title: kAppName.localized(), message: "Please enter email address." , okButton: "Ok", controller: self) {
+//            }
+//            
+//            return false
+//        }
+//        
+//        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
+//            showAlertMessage(title: kAppName.localized(), message: "Please enter valid email address." , okButton: "Ok", controller: self) {
+//            }
+//            
+//            return false
+//        }
         
         if ValidationManager.shared.isEmpty(text: txtMobile.text) == true {
             showAlertMessage(title: kAppName.localized(), message: "Please enter mobile number." , okButton: "Ok", controller: self) {
@@ -229,10 +236,14 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
     }
     
     @IBAction func btnCamera(_ sender: Any) {
-        self.imagePickerVC?.present(from: (sender as? UIView)!)
-        //        self.imgProfile.image = imagePickerVC
-        //        self.imgProfile.setRounded()
-        //        self.imageData = (image.jpegData(compressionQuality: 0.7)!)
+        ImagePickerManager().pickImage(self) { (img) in
+            self.imgProfile.image = img
+            self.imageData = (img.jpegData(compressionQuality: 0.7)!)
+        }
+      //  self.imagePickerVC?.present(from: (sender as? UIView)!)
+              //  self.imgProfile.image = imagePickerVC
+              //  self.imgProfile.setRounded()
+              //  self.imageData = (image.jpegData(compressionQuality: 0.7)!)
     }
     @IBAction func btnSave(_ sender: Any) {
         if validate() == false {

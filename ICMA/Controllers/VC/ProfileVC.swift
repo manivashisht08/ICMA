@@ -10,7 +10,6 @@ import Alamofire
 import SDWebImage
 import SafariServices
 
-
 class ProfileVC: UIViewController {
 
     @IBOutlet weak var lblEmail: ICMediumLabel!
@@ -28,11 +27,11 @@ class ProfileVC: UIViewController {
         getPrayerApi()
         
         tblProfile.register(UINib(nibName: "ProfileTVCell", bundle: nil), forCellReuseIdentifier: "ProfileTVCell")
+        self.ProfileArray.append(ProfileData(image: ICImageName.iconChange, details: "Change Password"))
         self.ProfileArray.append(ProfileData(image: ICImageName.iconMember, details: "Membership"))
         self.ProfileArray.append(ProfileData(image: ICImageName.iconAbout, details: "About Us"))
         self.ProfileArray.append(ProfileData(image: ICImageName.iconBlog, details: "Blog"))
         self.ProfileArray.append(ProfileData(image: ICImageName.iconContact, details: "Contact"))
-        self.ProfileArray.append(ProfileData(image: ICImageName.iconChange, details: "Change Password"))
         self.ProfileArray.append(ProfileData(image: ICImageName.iconRefer, details: "Refer a Friend")) 
         self.ProfileArray.append(ProfileData(image: ICImageName.iconLogout, details: "Logout")) 
     }
@@ -49,8 +48,7 @@ class ProfileVC: UIViewController {
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let header:HTTPHeaders = ["Token":token]
         print(token)
-        AFWrapperClass.requestGETURL(baseURL + ICMethods.getProfileDetail, params:nil, headers:header) { (response) in
-            print(response)
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.getProfileDetail, params:[:], headers:header) { [self] (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             let data = response ["data"] as? [String:Any] ?? [:]
             let fName = data["firstname"] as? String ?? ""
@@ -68,8 +66,6 @@ class ProfileVC: UIViewController {
         }
     }
         
-
-    
     @IBAction func btnProfile(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileSubscriptionVC") as! ProfileSubscriptionVC
         vc.email = lblEmail.text ?? ""
@@ -138,18 +134,22 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
         return 60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
+         if indexPath.row == 0 {
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChangePasswordVC") as! ChangePasswordVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if indexPath.row == 1{
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MembershipVC") as! MembershipVC
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        else if indexPath.row == 1 {
+        else if indexPath.row == 2 {
             if let url = URL(string:baseURL + ICMethods.aboutUs)
                     {
                         let safariCC = SFSafariViewController(url: url)
                         present(safariCC, animated: true, completion: nil)
                     }
         }
-        else if indexPath.row == 2 {
+        else if indexPath.row == 3 {
             if let url = URL(string:baseURL + ICMethods.blogs)
                     {
                         let safariCC = SFSafariViewController(url: url)
@@ -157,11 +157,9 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
                     }
         }
         
-        else if indexPath.row == 3 {
+        else if indexPath.row == 4 {
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactVC") as! ContactVC
             self.navigationController?.pushViewController(vc, animated: true)
-        }else if indexPath.row == 4 {
-            
         }
         
         else if indexPath.row == 5 {

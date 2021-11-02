@@ -8,6 +8,7 @@
 import UIKit
 import Toucan
 import IQKeyboardManagerSwift
+import Alamofire
 
 class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDelegate {
     
@@ -16,8 +17,7 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
     @IBOutlet weak var lblStartDate: ICRegularLabel!
     @IBOutlet weak var lblStatus: ICRegularLabel!
     @IBOutlet weak var lblSubscriptionPlan: ICRegularLabel!
-    @IBOutlet weak var txtPswrd: ICPasswordTextField!
-    @IBOutlet weak var pswrdView: UIView!
+ 
     @IBOutlet weak var txtEmail: ICEmailTextField!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var txtLastName: ICUsernameTextField!
@@ -47,7 +47,7 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
         txtFirstName.delegate = self
         txtLastName.delegate = self
         txtEmail.delegate = self
-        txtPswrd.delegate = self
+        getPrayerApi()
     }
     
     func validate() -> Bool {
@@ -79,24 +79,34 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
             
             return false
         }
+  
         
-        if ValidationManager.shared.isEmpty(text: txtPswrd.text) == true {
-            showAlertMessage(title: kAppName.localized(), message: "Please enter password." , okButton: "Ok", controller: self) {
-            }
-            
-            return false
-        }
-        
-        if ValidationManager.shared.isValid(text: txtPswrd.text!, for: RegularExpressions.password8AS) == false {
-            showAlertMessage(title: kAppName.localized(), message: "Please enter valid password. Password should contain at least 8 characters, with at least 1 letter and 1 special character." , okButton: "Ok", controller: self) {
-            }
-            
-            return false
-        }
         
         return true
     }
     
+    func getPrayerApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
+        }
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        let header:HTTPHeaders = ["Token":token]
+        print(token)
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.getProfileDetail, params:[:], headers:header) { [self] (response) in
+            print(response)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let data = response ["data"] as? [String:Any] ?? [:]
+            txtFirstName.text = data["firstname"] as? String ?? ""
+            txtLastName.text = data ["lastname"] as? String ?? ""
+            txtEmail.text = data["email"] as? String ?? ""
+            let img =  data["profileimage"] as? String ?? ""
+            self.imgProfile.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placehldr"))
+            
+        } failure: { (error) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+    }
     //------------------------------------------------------
     
     //MARK: UITextFieldDelegate
@@ -119,8 +129,7 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
             lNameView.borderColor =  ICColor.appButton
         case txtEmail:
             emailView.borderColor =  ICColor.appButton
-        case txtPswrd:
-            pswrdView.borderColor =  ICColor.appButton
+     
         default:break
             
         }
@@ -134,17 +143,14 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
             lNameView.borderColor = ICColor.appBorder
         case txtEmail:
             emailView.borderColor = ICColor.appBorder
-        case txtPswrd:
-            pswrdView.borderColor = ICColor.appBorder
+    
         default:break
         }
     }
     
-    
-    
-    
     @IBAction func btnEdit(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditProfileVC") as! EditProfileVC
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -153,4 +159,12 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
         self.navigationController?.popViewController(animated: true)
     }
     
+}
+
+extension ProfileSubscriptionVC: EditProfileProtocol{
+    func editProfile(fromEdit: Bool) {
+        if fromEdit{
+        getPrayerApi()
+        }
+    }
 }
