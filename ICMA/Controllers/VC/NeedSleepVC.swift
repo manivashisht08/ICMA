@@ -80,6 +80,11 @@ extension NeedSleepVC : UITableViewDelegate , UITableViewDataSource{
     
 }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let audioUrlString = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio ?? ""
+        guard let url = URL(string: audioUrlString) else {
+            alert(kAppName.localized(), message: "Invalid audio file", view: self)
+            return
+        }
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioVC") as! AudioVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -135,8 +140,14 @@ extension NeedSleepVC {
                     }
                 }
                 
-            }else {
-                alert(kAppName, message: msg, view: self)
+            }  else if status == 0{
+                showAlertMessage(title: kAppName.localized(), message: msg, okButton: "OK", controller: self) {
+                    appDel.logout()
+                }
+               
+
+            }
+            else {
             }
             self.tblSleep.reloadData()
         } failure: { (error) in

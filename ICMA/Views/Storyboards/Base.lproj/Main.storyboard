@@ -1154,7 +1154,7 @@
                                         <rect key="frame" x="110" y="0.0" width="100" height="100"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crlcpause" translatesAutoresizingMaskIntoConstraints="NO" id="gmJ-fc-n69">
-                                                <rect key="frame" x="5" y="5" width="90" height="90"/>
+                                                <rect key="frame" x="10" y="10" width="80" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="gmJ-fc-n69" secondAttribute="height" multiplier="1:1" id="TJZ-8L-AEL"/>
                                                 </constraints>
@@ -1177,7 +1177,7 @@
                                             <constraint firstItem="gmJ-fc-n69" firstAttribute="centerX" secondItem="WK1-CR-ePU" secondAttribute="centerX" id="Lq6-wl-IQq"/>
                                             <constraint firstItem="37G-kp-kZh" firstAttribute="centerY" secondItem="gmJ-fc-n69" secondAttribute="centerY" id="fCB-VU-bcm"/>
                                             <constraint firstItem="gmJ-fc-n69" firstAttribute="centerY" secondItem="WK1-CR-ePU" secondAttribute="centerY" id="iHU-zb-dPS"/>
-                                            <constraint firstItem="gmJ-fc-n69" firstAttribute="height" secondItem="WK1-CR-ePU" secondAttribute="height" multiplier="0.9" id="qff-dX-UDo"/>
+                                            <constraint firstItem="gmJ-fc-n69" firstAttribute="height" secondItem="WK1-CR-ePU" secondAttribute="height" multiplier="0.8" id="qff-dX-UDo"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j20-Aq-aqD">
@@ -1215,7 +1215,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eG8-qc-ISF">
                                 <rect key="frame" x="0.0" y="537" width="375" height="100"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="566-be-JCO">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="566-be-JCO">
                                         <rect key="frame" x="35.5" y="35" width="304" height="31"/>
                                         <color key="minimumTrackTintColor" name="appWhite"/>
                                         <color key="maximumTrackTintColor" red="0.47450980392156861" green="0.49411764705882355" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1223,14 +1223,14 @@
                                             <action selector="btnSlider:" destination="v9X-Og-glD" eventType="valueChanged" id="HR5-am-20I"/>
                                         </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="001-th-bIh" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
-                                        <rect key="frame" x="37.5" y="70" width="33" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="001-th-bIh" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
+                                        <rect key="frame" x="37.5" y="70" width="47.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" name="appWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1j-st-GfJ" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
-                                        <rect key="frame" x="300.5" y="70" width="37" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1j-st-GfJ" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
+                                        <rect key="frame" x="290" y="70" width="47.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" name="appWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1286,6 +1286,7 @@
                         <outlet property="lblEndTime" destination="K1j-st-GfJ" id="wGi-uj-MlA"/>
                         <outlet property="lblStartTime" destination="001-th-bIh" id="j6U-D7-ayn"/>
                         <outlet property="lblTitle" destination="UgK-gN-bIp" id="FLn-Hx-JXO"/>
+                        <outlet property="playPauseImg" destination="gmJ-fc-n69" id="tCl-z7-Nkx"/>
                         <outlet property="sliderValue" destination="566-be-JCO" id="Eyh-rY-iQa"/>
                     </connections>
                 </viewController>

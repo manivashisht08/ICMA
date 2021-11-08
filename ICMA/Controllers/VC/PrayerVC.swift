@@ -119,7 +119,8 @@ extension PrayerVC {
                     }
                 }
                 
-            }else{
+            }
+            else{
                 if self.prayerGet.count == 0{
                 alert(kAppName, message: msg, view: self)
                 // self.prayerGet.removeAll()

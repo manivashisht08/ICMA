@@ -126,6 +126,7 @@ class ChangePasswordVC: UIViewController,UITextFieldDelegate,UITextViewDelegate 
     }
     
 }
+
 extension ChangePasswordVC {
     func changePasswordApi(){
         DispatchQueue.main.async {
@@ -134,8 +135,8 @@ extension ChangePasswordVC {
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
 //        let userID = UserDefaults.standard.string(forKey: "id") ?? ""
         let url = baseURL + ICMethods.changePassword
-        var param = [String:Any]()
-        param  = ["old_password" : txtCurrentPswrd.text!,"new_password":txtNewPswrd.text!]
+        let param = ["old_password" : txtCurrentPswrd.text!,"new_password":txtNewPswrd.text!] as [String:Any]
+      
         print(param)
         let header:HTTPHeaders = ["Content-Type":"application/json","token":token]
         AFWrapperClass.requestPOSTURL(url, params: param, headers: header) { (response) in

@@ -137,8 +137,16 @@ extension DFHSTherapyVC {
                     }
                     
                 }
-            }else {
-                alert(kAppName, message: msg, view: self)
+            }
+            else if status == 0{
+                showAlertMessage(title: kAppName.localized(), message: msg, okButton: "OK", controller: self) {
+                    appDel.logout()
+                }
+               
+
+            }
+            else {
+               
             }
             self.tblTherapy.reloadData()
         } failure: { (error) in

@@ -88,6 +88,8 @@
 		7CB3D96B271EA7C8000A4329 /* bell-mt-grassetto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CB3D96A271EA7C7000A4329 /* bell-mt-grassetto.ttf */; };
 		7CB8FD8227311597000AB379 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8FD8127311597000AB379 /* ChangePasswordVC.swift */; };
 		7CB8FD8527312335000AB379 /* ImagePickFromGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8FD8427312335000AB379 /* ImagePickFromGallery.swift */; };
+		7CC101952739321500B667E7 /* ICMAAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC101942739321500B667E7 /* ICMAAudioPlayer.swift */; };
+		7CC10199273932A100B667E7 /* Mains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC10198273932A100B667E7 /* Mains.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,6 +179,8 @@
 		7CB3D96A271EA7C7000A4329 /* bell-mt-grassetto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bell-mt-grassetto.ttf"; sourceTree = "<group>"; };
 		7CB8FD8127311597000AB379 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		7CB8FD8427312335000AB379 /* ImagePickFromGallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickFromGallery.swift; sourceTree = "<group>"; };
+		7CC101942739321500B667E7 /* ICMAAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICMAAudioPlayer.swift; sourceTree = "<group>"; };
+		7CC10198273932A100B667E7 /* Mains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mains.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +335,8 @@
 				7CB8FD8427312335000AB379 /* ImagePickFromGallery.swift */,
 				187DCD72270DD80F00579F16 /* HelperMethods.swift */,
 				7C7ED8F1270C3A9F000FDC18 /* DisplayAlertManager.swift */,
+				7CC101942739321500B667E7 /* ICMAAudioPlayer.swift */,
+				7CC10198273932A100B667E7 /* Mains.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -386,6 +392,7 @@
 			children = (
 				3571CDC92715A25700B48705 /* AudioVC.swift */,
 				7C327D05270EC3D000614F50 /* BreathingExerciseVC.swift */,
+				7CB8FD8127311597000AB379 /* ChangePasswordVC.swift */,
 				7C327D0C270F0C7E00614F50 /* ClassicsHymnsVC.swift */,
 				358A640D2716B7E600F22310 /* ContactVC.swift */,
 				7CB3D964271D6748000A4329 /* DevotionalVC.swift */,
@@ -405,7 +412,6 @@
 				7C7ED957270C80E2000FDC18 /* SignUpVC.swift */,
 				35C5992D27181BEA007A363C /* SubscriptionVC.swift */,
 				7C7ED9D3270DC4FE000FDC18 /* TabBarVC.swift */,
-				7CB8FD8127311597000AB379 /* ChangePasswordVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -618,6 +624,7 @@
 				3571CDCA2715A25700B48705 /* AudioVC.swift in Sources */,
 				7C7ED8E6270C3A5B000FDC18 /* BaseVC.swift in Sources */,
 				7C76D859271ED7FF00C574AF /* ReferFriendVC.swift in Sources */,
+				7CC101952739321500B667E7 /* ICMAAudioPlayer.swift in Sources */,
 				7C7ED907270C3AFE000FDC18 /* ICAssistiveTouchView.swift in Sources */,
 				7C7ED8DD270C3A47000FDC18 /* AppExtensions.swift in Sources */,
 				35615BDD271410DF0055237D /* PrayerTVCell.swift in Sources */,
@@ -637,6 +644,7 @@
 				187DCD5D270DA91B00579F16 /* ForgotPasswordEntity.swift in Sources */,
 				358A64132716EACD00F22310 /* ProfileTVCell.swift in Sources */,
 				7C7ED916270C3B14000FDC18 /* ICLabel.swift in Sources */,
+				7CC10199273932A100B667E7 /* Mains.swift in Sources */,
 				7C7ED8E0270C3A4F000FDC18 /* AppFunctions.swift in Sources */,
 				7C7ED90D270C3B06000FDC18 /* ICDebouncer.swift in Sources */,
 				7C327D06270EC3D000614F50 /* BreathingExerciseVC.swift in Sources */,
@@ -792,7 +800,7 @@
 				CODE_SIGN_ENTITLEMENTS = ICMA/ICMA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.9;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = 929X3K498V;
 				INFOPLIST_FILE = ICMA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -817,7 +825,7 @@
 				CODE_SIGN_ENTITLEMENTS = ICMA/ICMA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.9;
+				CURRENT_PROJECT_VERSION = 1.10;
 				DEVELOPMENT_TEAM = 929X3K498V;
 				INFOPLIST_FILE = ICMA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

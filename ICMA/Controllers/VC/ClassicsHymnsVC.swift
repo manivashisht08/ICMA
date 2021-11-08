@@ -86,7 +86,15 @@ extension ClassicsHymnsVC : UITableViewDelegate , UITableViewDataSource{
     }
 }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let audioUrlString = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio ?? ""
+        guard let url = URL(string: audioUrlString) else {
+            alert(kAppName.localized(), message: "Invalid audio file", view: self)
+            return
+        }
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioVC") as! AudioVC
+        vc.musicTitle = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].title ?? ""
+        vc.music = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio ?? ""
+        vc.bgImg = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio_thumbnail ?? "crlcplay"
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -120,8 +128,8 @@ extension ClassicsHymnsVC {
             if status == 1 {
                 let data = response["video"] as? [String:Any] ?? [:]
                 let time = Double(data["creation_at"] as? String ?? "") ?? 0.0
-                
                 let timeString = self.timeStringFromUnixTimeOnly(unixTime: time)
+                
                 self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placehldr"))
                 self.lblDetail.text = data["category_name"] as? String ?? ""
                 self.lblTime.text = timeString
@@ -147,8 +155,14 @@ extension ClassicsHymnsVC {
                         }
                     }
                 }
-            }else{
-                alert(kAppName, message: msg, view: self)
+            }  else if status == 0{
+                showAlertMessage(title: kAppName.localized(), message: msg, okButton: "OK", controller: self) {
+                    appDel.logout()
+                }
+               
+
+            }
+            else{
             }
             self.tblClassics.reloadData()
         } failure: { (error) in
