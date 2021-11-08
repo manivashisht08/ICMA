@@ -7,6 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Alamofire
 
 class ChangePasswordVC: UIViewController,UITextFieldDelegate,UITextViewDelegate {
     
@@ -101,19 +102,13 @@ class ChangePasswordVC: UIViewController,UITextFieldDelegate,UITextViewDelegate 
 //            }
 //            return false
 //        }
-//
-//        if (txtNewPswrd.text == txtConfirmPswrd.text) {
-//            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.oldNewPasswordNotSame) {
-//            }
-//            return false
-//        }
-//
-//        if (txtNewPswrd.text != txtConfirmPswrd.text) {
-//            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.NewRetypePasswordNotMatch) {
-//            }
-//            return false
-//
-//        }
+
+        if (txtNewPswrd.text != txtConfirmPswrd.text) {
+            DisplayAlertManager.shared.displayAlert(target: self, animated: true, message: LocalizableConstants.ValidationMessage.NewRetypePasswordNotMatch) {
+            }
+            return false
+
+        }
         return true
     
     }
@@ -126,11 +121,55 @@ class ChangePasswordVC: UIViewController,UITextFieldDelegate,UITextViewDelegate 
         if validate() == false {
             return
         }else{
-            
+            changePasswordApi()
         }
     }
     
-    
+}
+extension ChangePasswordVC {
+    func changePasswordApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+        }
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+//        let userID = UserDefaults.standard.string(forKey: "id") ?? ""
+        let url = baseURL + ICMethods.changePassword
+        var param = [String:Any]()
+        param  = ["old_password" : txtCurrentPswrd.text!,"new_password":txtNewPswrd.text!]
+        print(param)
+        let header:HTTPHeaders = ["Content-Type":"application/json","token":token]
+        AFWrapperClass.requestPOSTURL(url, params: param, headers: header) { (response) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            let msg = response["message"] as? String ?? ""
+            let status = response["status"] as? Int ?? 0
+            if status == 1 {
+                DispatchQueue.main.async {
+                    Alert.present(
+                        title: AppAlertTitle.appName.rawValue,
+                        message: "Password updated successfully.",
+                        actions: .ok(handler: {
+                            self.navigationController?.popViewController(animated: true)
+                        }),
+                        from: self
+                    )
+                
+            }
+                
+            }else {
+                DispatchQueue.main.async {
+                    Alert.present(title: AppAlertTitle.appName.rawValue, message: msg, actions: .ok(handler: {
+                        
+                    }), from: self)
+                }
+            }
+        } failure: { (error) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(error)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+
+    }
 }
 
 

@@ -17,7 +17,6 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
     @IBOutlet weak var lblStartDate: ICRegularLabel!
     @IBOutlet weak var lblStatus: ICRegularLabel!
     @IBOutlet weak var lblSubscriptionPlan: ICRegularLabel!
- 
     @IBOutlet weak var txtEmail: ICEmailTextField!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var txtLastName: ICUsernameTextField!
@@ -25,6 +24,7 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
     @IBOutlet weak var fNameView: UIView!
     @IBOutlet weak var txtFirstName: ICUsernameTextField!
     @IBOutlet weak var imgProfile: UIImageView!
+    
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var fName = String()
     var lName = String()
@@ -80,8 +80,6 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
             return false
         }
   
-        
-        
         return true
     }
     
@@ -89,6 +87,7 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
         }
+        
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let header:HTTPHeaders = ["Token":token]
         print(token)

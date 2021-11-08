@@ -84,7 +84,7 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
     
     func editProfileApis()  {
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "", view: self)
+            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
         }
         let token = UserDefaults.standard.string(forKey: "token") ?? ""
         let userId = UserDefaults.standard.string(forKey: "id") ?? ""

@@ -64,9 +64,11 @@ extension SearchVC : UITableViewDelegate , UITableViewDataSource {
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 240
     }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == searchListing.count - 1{
             if lastPage == false{
@@ -91,6 +93,7 @@ struct SearchData {
         
     }
 }
+
 extension SearchVC {
     func searchApi(){
         DispatchQueue.main.async {
