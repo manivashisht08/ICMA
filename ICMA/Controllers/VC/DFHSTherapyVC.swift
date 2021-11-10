@@ -58,15 +58,19 @@ class DFHSTherapyVC: UIViewController {
     }
     
     @IBAction func btnMainImg(_ sender: Any) {
-
+//        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DevotionalVC") as! DevotionalVC
+//        vc.modalPresentationStyle = .overFullScreen
+//        self.present(vc, animated: true, completion: nil)
         bottomSheetView()
-
+//        let vc = DevotionalVC.instantiate(fromAppStoryboard: .Setting)
+//              vc.modalPresentationStyle = .overFullScreen
+//              self.present(vc, animated: true, completion: nil)
     }
 }
 extension DFHSTherapyVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DFTherapyTVCell", for: indexPath) as! DFTherapyTVCell
-        cell.mainImg.sd_setImage(with: URL(string: videoListing[indexPath.row].video_thumbnail), placeholderImage: UIImage(named: "placehldr"))
+        cell.mainImg.sd_setImage(with: URL(string: videoListing[indexPath.row].video_thumbnail), placeholderImage: UIImage(named: "placeholder"))
         cell.lblDetails.text = videoListing[indexPath.row].title
         cell.lblTime.text = videoListing[indexPath.row].creation_at
       
@@ -120,7 +124,7 @@ extension DFHSTherapyVC {
             if status == 1 {
                 let data = response ["banner"] as? [String:Any] ?? [:]
             
-                self.mainImg.sd_setImage(with: URL(string: data["banner_image"] as? String ?? ""), placeholderImage: UIImage(named: "placehldr"))
+                self.mainImg.sd_setImage(with: URL(string: data["banner_image"] as? String ?? ""), placeholderImage: UIImage(named: "placeholder"))
                 
                 
                 
@@ -144,9 +148,8 @@ extension DFHSTherapyVC {
                 }
                
 
-            }
-            else {
-               
+            }else {
+                alert(kAppName, message: msg, view: self)
             }
             self.tblTherapy.reloadData()
         } failure: { (error) in

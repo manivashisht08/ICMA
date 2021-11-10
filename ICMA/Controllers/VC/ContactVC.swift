@@ -106,6 +106,12 @@ class ContactVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
             
             return false
         }
+        if ValidationManager.shared.isValid(text: txtEmail.text!, for: RegularExpressions.email) == false {
+            showAlertMessage(title: kAppName.localized(), message: "Please enter valid email address", okButton: "OK", controller: self ){
+                
+            }
+            return false
+        }
         
         if ValidationManager.shared.isEmpty(text: txtMsg.text) == true {
             showAlertMessage(title: kAppName.localized(), message: "Please enter your message" , okButton: "Ok", controller: self) {

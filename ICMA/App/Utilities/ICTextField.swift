@@ -456,14 +456,20 @@ class ICEmailTextF: ICRegularTextField {
     }
     
 }
+
+
 class ICMobileNumberTextField: ICRegularTextField {
-    
+
     var leftUserView: UIView {
-        let imgView = UIImageView(image: UIImage(named: ""))
+        let imgView = UIImageView(image: UIImage(named:ICImageName.iconMobile))
         imgView.contentMode = .scaleAspectFit
         return imgView
     }
     
+    let paddings = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 5)
+    private static let height: CGFloat = 20
+    private static let crossButtonSize = CGSize(width: height, height: height)
+    private let crossButtonView = UIButton(frame: CGRect(origin: CGPoint.zero, size: crossButtonSize))
     //------------------------------------------------------
     
     //MARK: Customs
@@ -471,12 +477,10 @@ class ICMobileNumberTextField: ICRegularTextField {
     func setup() {
         
         leftView = leftUserView
-        
+        leftViewMode = .always
         self.keyboardType = .numberPad
         self.autocorrectionType = .no
-        self.autocapitalizationType = .words
-//        self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "",
-//        attributes:[NSAttributedString.Key.foregroundColor: ICColor.appWhite])
+
     }
     
     //------------------------------------------------------
@@ -484,8 +488,20 @@ class ICMobileNumberTextField: ICRegularTextField {
     //MARK: Override
     
     override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPoint(x: CGFloat(padding), y: CGFloat(padding * 1.6)), size: CGSize(width: CGFloat(padding) * 6, height: bounds.height -  CGFloat(padding * 3.2)))
+        return CGRect(origin: CGPoint(x: CGFloat(padding - 5), y: CGFloat(padding * 1.2)), size: CGSize(width: CGFloat(padding) * 2.3, height: bounds.height -  CGFloat(padding * 2.5)))
     }
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+         return bounds.inset(by: paddings)
+     }
+     
+     override func editingRect(forBounds bounds: CGRect) -> CGRect {
+         return bounds.inset(by: paddings)
+     }
+     
+     override func textRect(forBounds bounds: CGRect) -> CGRect {
+         return bounds.inset(by: paddings)
+     }
+
     
     //------------------------------------------------------
     
@@ -498,7 +514,6 @@ class ICMobileNumberTextField: ICRegularTextField {
         super.init(coder: aDecoder)
         
         setup()
+        
     }
 }
-
-

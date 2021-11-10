@@ -114,6 +114,7 @@ struct ICImageName {
     static let iconMember = "member"
     static let iconRefer = "refer"
     static let iconChange  = "change"
+    static let iconMobile  =  "mobile"
 }
 
 struct ICScreenName {

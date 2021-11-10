@@ -52,7 +52,7 @@ extension NotificationsVC : UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationsTVCell", for: indexPath) as! NotificationsTVCell
         let notify = notificationModel[indexPath.row]
         cell.imgMain.image = UIImage(named: notificationModel[indexPath.row].image)
-        cell.imgMain.sd_setImage(with: URL(string: notificationModel[indexPath.row].image), placeholderImage: UIImage(named: "placehldr"))
+        cell.imgMain.sd_setImage(with: URL(string: notificationModel[indexPath.row].image), placeholderImage: UIImage(named: "placeholder"))
         cell.imgMain.setRounded()
         cell.lblDetail.text = notify.message
         cell.lblDate.text = notify.creation_at

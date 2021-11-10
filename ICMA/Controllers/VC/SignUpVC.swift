@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import IQKeyboardManagerSwift
+import SafariServices
 
 class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     
@@ -156,8 +157,13 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     }
     
     @IBAction func btnTermCondition(_ sender: Any) {
-        
-    }
+        if let url = URL(string:"https:www.dharmani.com/ICMA/termAndCondition.html")
+                          {
+                              let safariCC = SFSafariViewController(url: url)
+                              present(safariCC, animated: true, completion: nil)
+            }
+              }
+    
     
     @IBAction func btnSignUp(_ sender: Any) {
         if validate() == false {

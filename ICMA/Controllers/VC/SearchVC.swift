@@ -61,7 +61,7 @@ extension SearchVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DFTherapyTVCell", for: indexPath) as! DFTherapyTVCell
 //        cell.mainImg.image = UIImage(named: SearchArray[indexPath.row].image)
-        cell.mainImg.sd_setImage(with: URL(string: searchListing[indexPath.row].video_thumbnail),placeholderImage: UIImage(named: "placehldr"))
+        cell.mainImg.sd_setImage(with: URL(string: searchListing[indexPath.row].video_thumbnail),placeholderImage: UIImage(named: "placeholder"))
         cell.lblDetails.text = searchListing[indexPath.row].title
         cell.lblTime.text = searchListing[indexPath.row].creation_at
         

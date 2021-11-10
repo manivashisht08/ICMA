@@ -27,6 +27,10 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
     @IBOutlet weak var txtFirstName: ICUsernameTextField!
     @IBOutlet weak var imgProfile: UIImageView!
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
+    
+    var email = String()
+    var fname = String()
+    var lname = String()
     var imagePickerVC: ImagePicker?
     var selectedImage: UIImage? {
         didSet {
@@ -38,7 +42,9 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        txtEmail.text = email
+        txtFirstName.text = fname
+        txtLastName.text = lname
         setup()
        
     }

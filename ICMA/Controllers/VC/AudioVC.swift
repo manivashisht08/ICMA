@@ -35,7 +35,7 @@ class AudioVC: UIViewController {
         MediaPlayerManager.shared.stop()
         MediaPlayerManager.shared.play(withURL: music)
         self.playPauseImg.image = UIImage(named: "crlcpause")
-        self.imgMain.sd_setImage(with: URL(string: bgImg), placeholderImage: UIImage(named: "placehldr"))
+        self.imgMain.sd_setImage(with: URL(string: bgImg), placeholderImage: UIImage(named: "placeholder"))
         // Do any additional setup after loading the view.
     }
     

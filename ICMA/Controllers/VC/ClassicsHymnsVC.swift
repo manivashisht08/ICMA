@@ -38,6 +38,8 @@ class ClassicsHymnsVC: UIViewController {
 
     }
 
+    @IBAction func btnVideoTapped(_ sender: UIButton) {
+    }
 }
 //--------------------------------------------------------------
 //MARK:- table view section
@@ -130,7 +132,7 @@ extension ClassicsHymnsVC {
                 let time = Double(data["creation_at"] as? String ?? "") ?? 0.0
                 let timeString = self.timeStringFromUnixTimeOnly(unixTime: time)
                 
-                self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placehldr"))
+                self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placeholder"))
                 self.lblDetail.text = data["category_name"] as? String ?? ""
                 self.lblTime.text = timeString
                 

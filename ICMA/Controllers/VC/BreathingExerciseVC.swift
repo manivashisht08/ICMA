@@ -34,7 +34,8 @@ class BreathingExerciseVC: UIViewController {
         self.BreathingArray.append(BreathingData(image: "img3", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
         self.BreathingArray.append(BreathingData(image: "img4", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
     }
-    
+    @IBAction func btnVideoTapped(_ sender: UIButton) {
+    }
 }
 //--------------------------------------------------------------
 //MARK:- table view section
@@ -139,7 +140,7 @@ extension BreathingExerciseVC {
                 let time = Double(data["creation_at"] as? String ?? "") ?? 0.0
                 
                 let timeString = self.timeStringFromUnixTimeOnly(unixTime: time)
-                self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placehldr"))
+                self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placeholder"))
                 self.lblDetails.text = data["category_name"] as? String ?? ""
                 self.lblTime.text = timeString
                 

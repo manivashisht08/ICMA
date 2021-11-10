@@ -150,6 +150,9 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
     @IBAction func btnEdit(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditProfileVC") as! EditProfileVC
         vc.delegate = self
+        vc.email = txtEmail.text ?? ""
+        vc.fname = txtFirstName.text ?? ""
+        vc.lname = txtLastName.text ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

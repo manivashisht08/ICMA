@@ -36,7 +36,8 @@ class NeedSleepVC: UIViewController {
 //        self.SleepingArray.append(SleepingData(image: "img4", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-3 min"))
 
     }
-    
+    @IBAction func btnVideoTapped(_ sender: UIButton) {
+    }
 }
 extension NeedSleepVC : UITableViewDelegate , UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -120,7 +121,7 @@ extension NeedSleepVC {
                 let data = response["video"] as? [String : Any] ?? [:]
                 let time = Double(data["creation_at"] as? String ?? "") ?? 0.0
                 let timeString = self.timeStringFromUnixTimeOnly(unixTime: time)
-                self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placehldr"))
+                self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placeholder"))
                 self.lblDetail.text = data["category_name"] as? String ?? ""
                 self.lblTime.text = timeString
                 
@@ -128,7 +129,7 @@ extension NeedSleepVC {
                     if let dataDict = result["audio"] as? [[String:Any]]{
                         var audioDt = [audioVideoListingModel]()
                         for obj in dataDict{
-                            var dtDict = obj["data"] as? [NSDictionary] ?? [NSDictionary]()
+                            let dtDict = obj["data"] as? [NSDictionary] ?? [NSDictionary]()
                             print (dtDict)
                             for obj2 in dtDict{
                                 audioDt.append(audioVideoListingModel.init(id: obj2["id"] as? String ?? "", title: obj2["title"] as? String ?? "", audio: obj2["audio"] as? String ?? "" , start_time: obj2["start_time"] as? String ?? "", end_time: obj2["end_time"] as? String ?? "", audio_thumbnail: obj2["audio_thumbnail"] as? String ?? "",subcategory_id: obj2["subcategory_id"] as? String ?? "",creation_at: obj2["creation_at"] as? String ?? "", categoryid: obj2["categoryid"] as? String ?? ""))
@@ -144,8 +145,7 @@ extension NeedSleepVC {
                 showAlertMessage(title: kAppName.localized(), message: msg, okButton: "OK", controller: self) {
                     appDel.logout()
                 }
-               
-
+            
             }
             else {
             }

@@ -54,6 +54,12 @@
                                             <constraint firstAttribute="height" constant="20" id="xed-qK-d1P"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1T-oF-8LI">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                        <connections>
+                                            <action selector="videoPlayBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5c7-t8-a6x"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -61,9 +67,13 @@
                                     <constraint firstItem="Ugh-tm-fCo" firstAttribute="top" secondItem="gJ8-p9-XeK" secondAttribute="top" id="DKl-ic-qro"/>
                                     <constraint firstAttribute="height" constant="180" id="Hsz-D3-902"/>
                                     <constraint firstItem="Ugh-tm-fCo" firstAttribute="leading" secondItem="gJ8-p9-XeK" secondAttribute="leading" id="LBo-VU-Hyx"/>
+                                    <constraint firstAttribute="bottom" secondItem="X1T-oF-8LI" secondAttribute="bottom" id="TqJ-SG-ukX"/>
+                                    <constraint firstItem="X1T-oF-8LI" firstAttribute="top" secondItem="gJ8-p9-XeK" secondAttribute="top" id="hFR-mh-QJ5"/>
+                                    <constraint firstAttribute="trailing" secondItem="X1T-oF-8LI" secondAttribute="trailing" id="hTB-XR-IcH"/>
                                     <constraint firstAttribute="trailing" secondItem="Ugh-tm-fCo" secondAttribute="trailing" id="jrq-9N-GS5"/>
                                     <constraint firstAttribute="bottom" secondItem="Ugh-tm-fCo" secondAttribute="bottom" id="oYj-5G-KUQ"/>
                                     <constraint firstAttribute="trailing" secondItem="tWQ-c3-NOc" secondAttribute="trailing" constant="5" id="y0R-vY-2my"/>
+                                    <constraint firstItem="X1T-oF-8LI" firstAttribute="leading" secondItem="gJ8-p9-XeK" secondAttribute="leading" id="y2H-uA-t4Y"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something to Laugh About" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbH-Rh-Xsr" customClass="ICSemiboldLabel" customModule="ICMA" customModuleProvider="target">
@@ -98,6 +108,7 @@
                 <outlet property="lblTime" destination="je8-bY-3Sk" id="hEy-Of-8ix"/>
                 <outlet property="lblView" destination="tWQ-c3-NOc" id="L03-pF-CfV"/>
                 <outlet property="mainImg" destination="Ugh-tm-fCo" id="0LV-AN-rck"/>
+                <outlet property="videoBtn" destination="X1T-oF-8LI" id="ggY-iY-aAG"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="146.65178571428569"/>
         </tableViewCell>
