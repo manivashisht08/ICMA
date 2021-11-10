@@ -8,6 +8,8 @@
 import UIKit
 import FittedSheets
 import Alamofire
+import AVFoundation
+import AVKit
 
 class DFHSTherapyVC: UIViewController {
     var page = 1
@@ -58,13 +60,9 @@ class DFHSTherapyVC: UIViewController {
     }
     
     @IBAction func btnMainImg(_ sender: Any) {
-//        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DevotionalVC") as! DevotionalVC
-//        vc.modalPresentationStyle = .overFullScreen
-//        self.present(vc, animated: true, completion: nil)
+
         bottomSheetView()
-//        let vc = DevotionalVC.instantiate(fromAppStoryboard: .Setting)
-//              vc.modalPresentationStyle = .overFullScreen
-//              self.present(vc, animated: true, completion: nil)
+
     }
 }
 extension DFHSTherapyVC : UITableViewDelegate , UITableViewDataSource {
@@ -72,12 +70,25 @@ extension DFHSTherapyVC : UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DFTherapyTVCell", for: indexPath) as! DFTherapyTVCell
         cell.mainImg.sd_setImage(with: URL(string: videoListing[indexPath.row].video_thumbnail), placeholderImage: UIImage(named: "placeholder"))
         cell.lblDetails.text = videoListing[indexPath.row].title
-        cell.lblTime.text = videoListing[indexPath.row].creation_at
-      
+        cell.lblTime.text = videoListing[indexPath.row].end_time
+        let video = videoListing[indexPath.row].video_thumbnail
+        print(video,videoListing[indexPath.row].video,"lop")
         DispatchQueue.main.async {
-            self.heightConstraint.constant = self.tblTherapy.contentSize.height
+        self.heightConstraint.constant = self.tblTherapy.contentSize.height
         }
-       
+        
+        cell.videoBTN = {
+            let url : String = self.videoListing[indexPath.row].video
+            if let urlStr : String = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),let convertedURL : URL = URL(string: urlStr){
+                let player = AVPlayer(url: convertedURL)
+                let playerViewController = AVPlayerViewController()
+                playerViewController.player = player
+                self.present(playerViewController, animated: true)
+                {
+                    playerViewController.player!.play()
+                }
+            }
+        }
         return cell
     }
     
@@ -141,13 +152,6 @@ extension DFHSTherapyVC {
                     }
                     
                 }
-            }
-            else if status == 0{
-                showAlertMessage(title: kAppName.localized(), message: msg, okButton: "OK", controller: self) {
-                    appDel.logout()
-                }
-               
-
             }else {
                 alert(kAppName, message: msg, view: self)
             }

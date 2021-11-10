@@ -7,6 +7,8 @@
 
 import UIKit
 import Alamofire
+import AVKit
+import AVFoundation
 
 class BreathingExerciseVC: UIViewController {
     
@@ -29,12 +31,25 @@ class BreathingExerciseVC: UIViewController {
         
         tblBreathing.register(UINib(nibName: "BreathingTVCell", bundle: nil), forCellReuseIdentifier: "BreathingTVCell")
         
-        self.BreathingArray.append(BreathingData(image: "img1", details:" Inhale God's Peace, Exhale Anxiety with Guidance", time : "  4-5 min"))
-        self.BreathingArray.append(BreathingData(image: "img2", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  3-7 min"))
-        self.BreathingArray.append(BreathingData(image: "img3", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
-        self.BreathingArray.append(BreathingData(image: "img4", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
+//        self.BreathingArray.append(BreathingData(image: "img1", details:" Inhale God's Peace, Exhale Anxiety with Guidance", time : "  4-5 min"))
+//        self.BreathingArray.append(BreathingData(image: "img2", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  3-7 min"))
+//        self.BreathingArray.append(BreathingData(image: "img3", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
+//        self.BreathingArray.append(BreathingData(image: "img4", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
     }
     @IBAction func btnVideoTapped(_ sender: UIButton) {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomVideoPlayer") as! CustomVideoPlayer
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        let url : String = videoPlay
+//        let urlStr : String = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+//        let convertedURL : URL = URL(string: urlStr)!
+//        print(convertedURL)
+//        let player = AVPlayer(url: convertedURL)
+//        let playerViewController = AVPlayerViewController()
+//        playerViewController.player = player
+//        self.present(playerViewController, animated: true)
+//        {
+//            playerViewController.player!.play()
+//        }
     }
 }
 //--------------------------------------------------------------

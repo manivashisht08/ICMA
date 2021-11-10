@@ -26,6 +26,6 @@ class DFTherapyTVCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func videoPlayBtnClicked(_ sender: UIButton) {
-//        videoBTN!()
+       videoBTN!()
 }
 }

@@ -9,38 +9,69 @@ import UIKit
 import Alamofire
 import AVFoundation
 
-class SearchVC: UIViewController {
+class SearchVC: UIViewController,UITextFieldDelegate {
     var page = 1
     var lastPage = Bool()
-    var searchListing = [searchListingModel]()
+    var searchListing:[searchListingModel] = []{
+        didSet{
+            DispatchQueue.main.async {
+                self.tblSearch.reloadData()
+            }
+        }
+    }
     @IBOutlet weak var tblSearch: UITableView!
     @IBOutlet weak var txtSearch: UITextField!
+    var debounce: SCDebouncer?
+
     var SearchArray = [SearchData]()
     override func viewDidLoad() {
         super.viewDidLoad()
         tblSearch.dataSource = self
         tblSearch.delegate = self
-        
+        txtSearch.delegate = self
         searchApi(searchText: "")
-        
+        tblSearch.separatorStyle = .none
         tblSearch.register(UINib(nibName: "DFTherapyTVCell", bundle: nil), forCellReuseIdentifier: "DFTherapyTVCell")
         
         self.SearchArray.append(SearchData(image: "lady", details: "Something to Laugh About", time : "1:40"))
         self.SearchArray.append(SearchData(image: "lady", details: "Something to Laugh About", time : "2:40"))
         self.SearchArray.append(SearchData(image: "lady", details: "Something to Laugh About", time : "1:20"))
         self.SearchArray.append(SearchData(image: "lady", details: "Something to Laugh About", time : "3:40"))
-        txtSearch.addTarget(self, action: #selector(searchText(sender:)), for: .editingDidEnd)
-        txtSearch.addTarget(self, action: #selector(searchText(sender:)), for: .editingDidEndOnExit)
+        txtSearch.addTarget(self, action: #selector(searchTapped(sendeR:)), for: .editingDidEnd)
+        txtSearch.addTarget(self, action: #selector(editingChanges(sendeR:)), for: .editingChanged)
+        txtSearch.clearsOnBeginEditing = true
+//        txtSearch.addTarget(self, action: #selector(searchText(sender:)), for: .editingDidEndOnExit)
     }
     
-    @objc func searchText(sender: UITextField){
-        if sender.text?.trimWhiteSpace != "" {
-            searchListing.removeAll()
-            searchApi(searchText: sender.text!)
+    @objc func editingChanges(sendeR: UITextField){
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.reload(_:)), object: sendeR)
+        perform(#selector(self.reload(_:)), with: sendeR, afterDelay: 0.75)
+    }
+      
+    @objc func reload(_ searchField: UITextField) {
+        if searchField.text != ""{
+            lastPage = false
+            page = 1
+            self.searchListing.removeAll()
+            self.tblSearch.reloadData()
+            searchApi(searchText: searchField.text!)
         }else{
-            searchListing.removeAll()
-            tblSearch.reloadData()
-            alert(kAppName, message: "Please enter text", view: self)
+            lastPage = false
+            page = 1
+            self.searchListing.removeAll()
+            self.tblSearch.reloadData()
+            searchApi(searchText: "")
+        }
+    }
+      
+      
+    @objc func searchTapped(sendeR: UITextField){
+        if sendeR.text == ""{
+            lastPage = false
+            page = 1
+            self.searchListing.removeAll()
+            self.tblSearch.reloadData()
+            searchApi(searchText: sendeR.text!)
         }
     }
     
@@ -100,16 +131,15 @@ struct SearchData {
 extension SearchVC {
     func searchApi(searchText: String){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
+           // AFWrapperClass.svprogressHudShow(title: "Loading...", view: self)
         }
-        let param = [ "title" : searchText, "perPage" : "100","pageNo" : "1"] as [String:Any]
+        let param = [ "title" : searchText, "perPage" : "100","pageNo" : "\(page)"] as [String:Any]
         print(param)
         let token = UserDefaults.standard.string(forKey: "Token") ?? ""
         let header:HTTPHeaders = ["Token":token]
         print(header)
-        self.SearchArray.removeAll()
         AFWrapperClass.requestPOSTURL(baseURL + ICMethods.searchListing , params: param, headers: header) { (response) in
-            AFWrapperClass.svprogressHudDismiss(view: self)
+           // AFWrapperClass.svprogressHudDismiss(view: self)
             let msg = response["message"] as? String ?? ""
             let status = response["status"] as? Int ?? 0
             if status == 1 {

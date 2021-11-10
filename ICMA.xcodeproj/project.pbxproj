@@ -82,6 +82,7 @@
 		7C7ED9AE270D90DC000FDC18 /* DFTherapyTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C7ED9AC270D90DB000FDC18 /* DFTherapyTVCell.xib */; };
 		7C7ED9D1270DBD92000FDC18 /* DFHSTherapyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED9D0270DBD91000FDC18 /* DFHSTherapyVC.swift */; };
 		7C7ED9D4270DC4FE000FDC18 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ED9D3270DC4FE000FDC18 /* TabBarVC.swift */; };
+		7C8A87D9273BD7F300A4F610 /* SCDebouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8A87D8273BD7F300A4F610 /* SCDebouncer.swift */; };
 		7CB3D962271D64F0000A4329 /* MembershipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3D961271D64F0000A4329 /* MembershipVC.swift */; };
 		7CB3D965271D6748000A4329 /* DevotionalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3D964271D6748000A4329 /* DevotionalVC.swift */; };
 		7CB3D968271D69D4000A4329 /* ProfileSubscriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3D967271D69D4000A4329 /* ProfileSubscriptionVC.swift */; };
@@ -172,6 +173,7 @@
 		7C7ED9AC270D90DB000FDC18 /* DFTherapyTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DFTherapyTVCell.xib; sourceTree = "<group>"; };
 		7C7ED9D0270DBD91000FDC18 /* DFHSTherapyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFHSTherapyVC.swift; sourceTree = "<group>"; };
 		7C7ED9D3270DC4FE000FDC18 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		7C8A87D8273BD7F300A4F610 /* SCDebouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCDebouncer.swift; sourceTree = "<group>"; };
 		7C9A5989272293BC00985C20 /* ICMA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ICMA.entitlements; sourceTree = "<group>"; };
 		7CB3D961271D64F0000A4329 /* MembershipVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipVC.swift; sourceTree = "<group>"; };
 		7CB3D964271D6748000A4329 /* DevotionalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevotionalVC.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				7C7ED8FA270C3AC6000FDC18 /* DateTimeManager.swift */,
 				7C7ED8FD270C3ACA000FDC18 /* NavigationManager.swift */,
 				7C7ED900270C3AD3000FDC18 /* PreferenceManager.swift */,
+				7C8A87D8273BD7F300A4F610 /* SCDebouncer.swift */,
 				7C7ED903270C3AD9000FDC18 /* ValidationManager.swift */,
 				7CB8FD8427312335000AB379 /* ImagePickFromGallery.swift */,
 				187DCD72270DD80F00579F16 /* HelperMethods.swift */,
@@ -617,6 +620,7 @@
 				7C7ED8B0270C3593000FDC18 /* AppDelegate.swift in Sources */,
 				7CB3D962271D64F0000A4329 /* MembershipVC.swift in Sources */,
 				7C7ED8E3270C3A56000FDC18 /* AppNavigations.swift in Sources */,
+				7C8A87D9273BD7F300A4F610 /* SCDebouncer.swift in Sources */,
 				35615BE027141B570055237D /* PrayerVC.swift in Sources */,
 				7C7ED95B270C814A000FDC18 /* ForgotPasswordVC.swift in Sources */,
 				7C7ED8FB270C3AC6000FDC18 /* DateTimeManager.swift in Sources */,
@@ -800,7 +804,7 @@
 				CODE_SIGN_ENTITLEMENTS = ICMA/ICMA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.11;
+				CURRENT_PROJECT_VERSION = 1.12;
 				DEVELOPMENT_TEAM = 929X3K498V;
 				INFOPLIST_FILE = ICMA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -825,7 +829,7 @@
 				CODE_SIGN_ENTITLEMENTS = ICMA/ICMA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.11;
+				CURRENT_PROJECT_VERSION = 1.12;
 				DEVELOPMENT_TEAM = 929X3K498V;
 				INFOPLIST_FILE = ICMA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
