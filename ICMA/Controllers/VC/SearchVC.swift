@@ -8,10 +8,13 @@
 import UIKit
 import Alamofire
 import AVFoundation
+import AVKit
 
 class SearchVC: UIViewController,UITextFieldDelegate {
     var page = 1
     var lastPage = Bool()
+    var videoPlay = String()
+
     var searchListing:[searchListingModel] = []{
         didSet{
             DispatchQueue.main.async {
@@ -92,10 +95,10 @@ extension SearchVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DFTherapyTVCell", for: indexPath) as! DFTherapyTVCell
 //        cell.mainImg.image = UIImage(named: SearchArray[indexPath.row].image)
-        cell.mainImg.sd_setImage(with: URL(string: searchListing[indexPath.row].video_thumbnail),placeholderImage: UIImage(named: "placeholder"))
+        let data = searchListing[indexPath.row]
+        cell.mainImg.sd_setImage(with: URL(string: data.type == "1" ? data.video_thumbnail : data.audio_thumbnail),placeholderImage: UIImage(named: "placeholder"))
         cell.lblDetails.text = searchListing[indexPath.row].title
         cell.lblTime.text = searchListing[indexPath.row].creation_at
-        
         return cell
     }
     
@@ -114,7 +117,26 @@ extension SearchVC : UITableViewDelegate , UITableViewDataSource {
         page = page + 1
         searchApi(searchText: txtSearch.text!)
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let obj = searchListing[indexPath.row]
+        print(obj)
+        if obj.type == "1"{
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomVideoPlayer") as! CustomVideoPlayer
+            vc.data = obj.video.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else if obj.type == "2"{
+            guard let url = URL(string: obj.audio.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
+                alert(AppAlertTitle.appName.rawValue, message: "Invalid audio file", view: self)
+                return
+            }
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioVC") as! AudioVC
+            vc.musicTitle = obj.title
+            vc.music = obj.audio.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            vc.bgImg = !obj.audio_thumbnail.isEmpty ? (obj.audio_thumbnail.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")  : "crlcplay"
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        }
+    }
 }
 struct SearchData {
     var image : String
@@ -145,6 +167,7 @@ extension SearchVC {
             if status == 1 {
                 if let result = response as? [String:Any]{
                     if let dataDict = result["data"] as? [[String:Any]]{
+                        
                         print(dataDict)
                         for i in 0..<dataDict.count{
                             let time = Double(dataDict[i]["creation_at"] as? String ?? "") ?? 0.0
@@ -152,7 +175,7 @@ extension SearchVC {
                             let id = dataDict[i]["id"] as? String ?? ""
                             let filter = self.searchListing.filter({$0.id == id}).isEmpty
                             if filter{
-                                self.searchListing.append(searchListingModel(id: dataDict[i]["id"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", video: dataDict[i]["video"] as? String ?? "", name: dataDict[i]["name"] as? String ?? "", start_time: dataDict[i]["start_time"] as? String ?? "", end_time: dataDict[i]["end_time"] as? String ?? "", video_width: dataDict[i]["video_width"] as? String ?? "", video_height: dataDict[i]["video_height"] as? String ?? "", video_thumbnail: dataDict[i]["video_thumbnail"] as? String ?? "", subcategory: dataDict[i]["subcategory"] as? String ?? "" , creation_at: timeString, type: dataDict[i]["type"] as? String ?? "", link: dataDict[i]["link"] as? String ?? "", audio_thumbnail: dataDict[i]["audio_thumbnail"] as? String ?? ""))
+                                self.searchListing.append(searchListingModel(id: dataDict[i]["id"] as? String ?? "", title: dataDict[i]["title"] as? String ?? "", video: dataDict[i]["video"] as? String ?? "", name: dataDict[i]["name"] as? String ?? "", start_time: dataDict[i]["start_time"] as? String ?? "", end_time: dataDict[i]["end_time"] as? String ?? "", video_width: dataDict[i]["video_width"] as? String ?? "", video_height: dataDict[i]["video_height"] as? String ?? "", video_thumbnail: dataDict[i]["video_thumbnail"] as? String ?? "", subcategory: dataDict[i]["subcategory"] as? String ?? "" , creation_at: timeString, type: "\(dataDict[i]["type"] as? Int ?? 0)", link: dataDict[i]["link"] as? String ?? "", audio_thumbnail: dataDict[i]["audio_thumbnail"] as? String ?? "",audio:dataDict[i]["audio"] as? String ?? "" ))
                             }
                         }
                     }

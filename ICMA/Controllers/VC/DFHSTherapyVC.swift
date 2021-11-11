@@ -78,16 +78,7 @@ extension DFHSTherapyVC : UITableViewDelegate , UITableViewDataSource {
         }
         
         cell.videoBTN = {
-            let url : String = self.videoListing[indexPath.row].video
-            if let urlStr : String = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),let convertedURL : URL = URL(string: urlStr){
-                let player = AVPlayer(url: convertedURL)
-                let playerViewController = AVPlayerViewController()
-                playerViewController.player = player
-                self.present(playerViewController, animated: true)
-                {
-                    playerViewController.player!.play()
-                }
-            }
+           
         }
         return cell
     }
@@ -97,6 +88,12 @@ extension DFHSTherapyVC : UITableViewDelegate , UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 245
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomVideoPlayer") as! CustomVideoPlayer
+        vc.data = self.videoListing[indexPath.row].video.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 //    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension

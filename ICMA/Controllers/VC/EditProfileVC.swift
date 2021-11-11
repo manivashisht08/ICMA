@@ -61,32 +61,32 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
         txtMobile.delegate = self
     }
     
-    func editProfileApi(){
-        DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "", view: self)
-        }
-        let token = UserDefaults.standard.string(forKey: "token") ?? ""
-        let userId = UserDefaults.standard.string(forKey: "id") ?? ""
-        let header:HTTPHeaders = ["token":token]
-        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.editProfile, params: generatingParameters(), headers: header) { (response) in
-            print(response)
-            AFWrapperClass.svprogressHudDismiss(view: self)
-            let msg = response["message"] as? String ?? ""
-            let status = response["status"] as? Int ?? 0
-            if status == 1 {
-                showAlertMessage(title: kAppName.localized(), message: msg, okButton: "OK", controller: self) {
-                    
-                }
-            }else {
-                alert(AppAlertTitle.appName.rawValue, message: msg, view: self)
-            }
-            
-        } failure: { error in
-            AFWrapperClass.svprogressHudDismiss(view: self)
-            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
-        }
-        
-    }
+//    func editProfileApi(){
+//        DispatchQueue.main.async {
+//            AFWrapperClass.svprogressHudShow(title: "", view: self)
+//        }
+//        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+//        let userId = UserDefaults.standard.string(forKey: "id") ?? ""
+//        let header:HTTPHeaders = ["token":token]
+//        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.editProfile, params: generatingParameters(), headers: header) { (response) in
+//            print(response)
+//            AFWrapperClass.svprogressHudDismiss(view: self)
+//            let msg = response["message"] as? String ?? ""
+//            let status = response["status"] as? Int ?? 0
+//            if status == 1 {
+//                showAlertMessage(title: kAppName.localized(), message: msg, okButton: "OK", controller: self) {
+//                    
+//                }
+//            }else {
+//                alert(AppAlertTitle.appName.rawValue, message: msg, view: self)
+//            }
+//            
+//        } failure: { error in
+//            AFWrapperClass.svprogressHudDismiss(view: self)
+//            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+//        }
+//        
+//    }
     
     func editProfileApis()  {
         DispatchQueue.main.async {

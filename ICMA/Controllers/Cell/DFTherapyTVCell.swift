@@ -10,7 +10,6 @@ import UIKit
 class DFTherapyTVCell: UITableViewCell {
     var videoBTN:(()->Void)?
 
-    @IBOutlet weak var videoBtn: UIButton!
     @IBOutlet weak var lblDetails: ICMediumLabel!
     @IBOutlet weak var lblTime: ICRegularLabel!
     @IBOutlet weak var lblView: UIView!
@@ -26,6 +25,6 @@ class DFTherapyTVCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func videoPlayBtnClicked(_ sender: UIButton) {
-       videoBTN!()
-}
+
+    }
 }

@@ -135,9 +135,10 @@ struct searchListingModel {
     var creation_at = String()
     var type = String()
     var link = String()
+    var audio = String()
     var audio_thumbnail = String()
     
-    init(id:String,title : String,video:String, name:String,start_time:String,end_time:String,video_width:String,video_height:String,video_thumbnail:String,subcategory:String,creation_at:String,type:String,link:String,audio_thumbnail:String) {
+    init(id:String,title : String,video:String, name:String,start_time:String,end_time:String,video_width:String,video_height:String,video_thumbnail:String,subcategory:String,creation_at:String,type:String,link:String,audio_thumbnail:String,audio:String) {
         self.id = id
         self.title = title
         self.video = video
@@ -152,5 +153,6 @@ struct searchListingModel {
         self.type = type
         self.link = link
         self.audio_thumbnail = audio_thumbnail
+        self.audio = audio
     }
 }

@@ -13,6 +13,7 @@ import AVFoundation
 class BreathingExerciseVC: UIViewController {
     
     var audioVideoListing = [AudioModel]()
+    var videoPlay = String()
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tblBreathing: UITableView!
     @IBOutlet weak var lblDetails: ICMediumLabel!
@@ -37,19 +38,9 @@ class BreathingExerciseVC: UIViewController {
 //        self.BreathingArray.append(BreathingData(image: "img4", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
     }
     @IBAction func btnVideoTapped(_ sender: UIButton) {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomVideoPlayer") as! CustomVideoPlayer
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        let url : String = videoPlay
-//        let urlStr : String = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-//        let convertedURL : URL = URL(string: urlStr)!
-//        print(convertedURL)
-//        let player = AVPlayer(url: convertedURL)
-//        let playerViewController = AVPlayerViewController()
-//        playerViewController.player = player
-//        self.present(playerViewController, animated: true)
-//        {
-//            playerViewController.player!.play()
-//        }
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomVideoPlayer") as! CustomVideoPlayer
+        vc.data = videoPlay
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 //--------------------------------------------------------------
@@ -111,9 +102,10 @@ extension BreathingExerciseVC : UITableViewDelegate , UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let audioUrlString = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio ?? ""
-        guard let url = URL(string: audioUrlString) else {
-            alert(kAppName.localized(), message: "Invalid audio file", view: self)
+        let audioUrlString = (audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio ?? "")
+        print(audioUrlString)
+        guard let url = URL(string: audioUrlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
+            alert(AppAlertTitle.appName.rawValue, message: "Invalid audio file", view: self)
             return
         }
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioVC") as! AudioVC
@@ -155,6 +147,8 @@ extension BreathingExerciseVC {
                 let time = Double(data["creation_at"] as? String ?? "") ?? 0.0
                 
                 let timeString = self.timeStringFromUnixTimeOnly(unixTime: time)
+                self.videoPlay = data["category_video"] as? String ?? ""
+
                 self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placeholder"))
                 self.lblDetails.text = data["category_name"] as? String ?? ""
                 self.lblTime.text = timeString

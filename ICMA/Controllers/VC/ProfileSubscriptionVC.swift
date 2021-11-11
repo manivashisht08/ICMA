@@ -37,7 +37,7 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
         txtEmail.text = email
         txtFirstName.text = fName
         txtLastName.text = lName
-        self.imgProfile.sd_setImage(with: URL(string: proImage), placeholderImage: UIImage(named: "placehldr"))
+        self.imgProfile.sd_setImage(with: URL(string: proImage), placeholderImage: UIImage(named: "proplaceholder"))
     }
     
     func setup(){
@@ -99,7 +99,7 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
             txtLastName.text = data ["lastname"] as? String ?? ""
             txtEmail.text = data["email"] as? String ?? ""
             let img =  data["profileimage"] as? String ?? ""
-            self.imgProfile.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placehldr"))
+            self.imgProfile.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "proplaceholder"))
             
         } failure: { (error) in
             AFWrapperClass.svprogressHudDismiss(view: self)

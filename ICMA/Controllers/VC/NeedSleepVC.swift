@@ -7,10 +7,13 @@
 
 import UIKit
 import Alamofire
+import AVKit
+import AVFoundation
 
 class NeedSleepVC: UIViewController {
 
     var audioVideoListing = [AudioModel]()
+    var videoPlay = String()
 
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblDetail: ICMediumLabel!
@@ -37,6 +40,10 @@ class NeedSleepVC: UIViewController {
 
     }
     @IBAction func btnVideoTapped(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomVideoPlayer") as! CustomVideoPlayer
+        vc.data = videoPlay
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
 }
 extension NeedSleepVC : UITableViewDelegate , UITableViewDataSource{
@@ -81,12 +88,16 @@ extension NeedSleepVC : UITableViewDelegate , UITableViewDataSource{
     
 }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let audioUrlString = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio ?? ""
-        guard let url = URL(string: audioUrlString) else {
-            alert(kAppName.localized(), message: "Invalid audio file", view: self)
+        let audioUrlString = (audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio ?? "")
+        print(audioUrlString)
+        guard let url = URL(string: audioUrlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "") else {
+            alert(AppAlertTitle.appName.rawValue, message: "Invalid audio file", view: self)
             return
         }
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioVC") as! AudioVC
+        vc.musicTitle = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].title ?? ""
+        vc.music = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio ?? ""
+        vc.bgImg = audioVideoListing[indexPath.section].audioDataModel[indexPath.row].audio_thumbnail ?? "crlcplay"
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -119,6 +130,8 @@ extension NeedSleepVC {
             let status = response["status"] as? Int ?? 0
             if status == 1 {
                 let data = response["video"] as? [String : Any] ?? [:]
+                self.videoPlay = data["category_video"] as? String ?? ""
+
                 let time = Double(data["creation_at"] as? String ?? "") ?? 0.0
                 let timeString = self.timeStringFromUnixTimeOnly(unixTime: time)
                 self.mainImg.sd_setImage(with: URL(string: data["video_thumbnail"] as? String ?? ""), placeholderImage: UIImage(named: "placeholder"))

@@ -58,7 +58,7 @@ class ProfileVC: UIViewController {
             self.lblEmail.text = data["email"] as? String ?? ""
             self.lblName.text = "\(fName) \(lName)"
             self.mainImg =  data["profileimage"] as? String ?? ""
-            self.imgProfile.sd_setImage(with: URL(string: data["profileimage"] as? String ?? ""), placeholderImage: UIImage(named: "placehldr"))
+            self.imgProfile.sd_setImage(with: URL(string: data["profileimage"] as? String ?? ""), placeholderImage: UIImage(named: "proplaceholder"))
             
         } failure: { (error) in
             AFWrapperClass.svprogressHudDismiss(view: self)

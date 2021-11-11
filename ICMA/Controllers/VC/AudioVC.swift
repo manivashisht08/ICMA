@@ -33,20 +33,23 @@ class AudioVC: UIViewController {
         sliderValue.isContinuous = false
         MediaPlayerManager.shared.delegate = self
         MediaPlayerManager.shared.stop()
-        MediaPlayerManager.shared.play(withURL: music)
+        if let fileString = music.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+            MediaPlayerManager.shared.play(withURL: fileString)
+        }
         self.playPauseImg.image = UIImage(named: "crlcpause")
         self.imgMain.sd_setImage(with: URL(string: bgImg), placeholderImage: UIImage(named: "placeholder"))
         // Do any additional setup after loading the view.
     }
     
     @IBAction func btnSlider(_ sender: UISlider) {
-        let audioUrl = music
-        if MediaPlayerManager.shared.isPlaying(on: audioUrl){
-            let seconds : Int64 = Int64(sender.value)
-            let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
-            MediaPlayerManager.shared.audioPlayer.seek(to: targetTime)
-        }else{
-            MediaPlayerManager.shared.play(withURL: audioUrl)
+        if let audioUrl = music.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+            if MediaPlayerManager.shared.isPlaying(on: audioUrl){
+                let seconds : Int64 = Int64(sender.value)
+                let targetTime:CMTime = CMTimeMake(value: seconds, timescale: 1)
+                MediaPlayerManager.shared.audioPlayer.seek(to: targetTime)
+            }else{
+                MediaPlayerManager.shared.play(withURL: audioUrl)
+            }
         }
     }
     
@@ -95,24 +98,25 @@ class AudioVC: UIViewController {
     }
     
     @IBAction func btnPlay(_ sender: Any) {
-        let audioUrl = self.music
-        if MediaPlayerManager.shared.isPause() && MediaPlayerManager.shared.isPlaying(on: audioUrl) {
-            debugPrint("existing play")
-            MediaPlayerManager.shared.resume()
-            playPauseImg.image = UIImage(named: "crlcpause")
-          //  musicindicator.stopAnimating()
-           // musicindicator.isHidden = true
-        }else if MediaPlayerManager.shared.isPlaying() && MediaPlayerManager.shared.isPlaying(on: audioUrl) {
-            debugPrint("existing pause")
-            MediaPlayerManager.shared.puase()
-          //  musicindicator.stopAnimating()
-           // musicindicator.isHidden = true
-            playPauseImg.image = UIImage(named: "crlcplay")
-        } else {
-            debugPrint("new play")
-            MediaPlayerManager.shared.play(withURL: audioUrl)
-            playPauseImg.image = UIImage(named: "crlcpause")
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: PMNotificationName.startSleepTimer.rawValue), object: nil)
+        if let audioUrl = self.music.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed){
+            if MediaPlayerManager.shared.isPause() && MediaPlayerManager.shared.isPlaying(on: audioUrl) {
+                debugPrint("existing play")
+                MediaPlayerManager.shared.resume()
+                playPauseImg.image = UIImage(named: "crlcpause")
+                //  musicindicator.stopAnimating()
+                // musicindicator.isHidden = true
+            }else if MediaPlayerManager.shared.isPlaying() && MediaPlayerManager.shared.isPlaying(on: audioUrl) {
+                debugPrint("existing pause")
+                MediaPlayerManager.shared.puase()
+                //  musicindicator.stopAnimating()
+                // musicindicator.isHidden = true
+                playPauseImg.image = UIImage(named: "crlcplay")
+            } else {
+                debugPrint("new play")
+                MediaPlayerManager.shared.play(withURL: audioUrl)
+                playPauseImg.image = UIImage(named: "crlcpause")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: PMNotificationName.startSleepTimer.rawValue), object: nil)
+            }
         }
     }
 }
