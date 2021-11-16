@@ -1630,22 +1630,22 @@
                                 <rect key="frame" x="0.0" y="76.5" width="375" height="590.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfx-K8-dOt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7b6-Q6-lt2">
-                                                <rect key="frame" x="30" y="25" width="315" height="70"/>
+                                                <rect key="frame" x="30" y="25" width="315" height="72"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="When five friends you've referred become a member, you'll receive ">
                                                         <attributes>
                                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                            <font key="NSFont" size="20" name="BellMTBold"/>
+                                                            <font key="NSFont" metaFont="system" size="20"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="one year free membership.">
                                                         <attributes>
                                                             <color key="NSColor" red="0.62105852370000003" green="0.19474393130000001" blue="0.95911830659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="20" name="BellMTBold"/>
+                                                            <font key="NSFont" metaFont="system" size="20"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -1653,25 +1653,25 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlC-LP-qu6">
-                                                <rect key="frame" x="0.0" y="95" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="97" width="375" height="20"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="referrr" translatesAutoresizingMaskIntoConstraints="NO" id="XpI-65-1RC">
-                                                <rect key="frame" x="56.5" y="115" width="262.5" height="262.5"/>
+                                                <rect key="frame" x="56.5" y="117" width="262.5" height="262.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="XpI-65-1RC" secondAttribute="height" multiplier="1:1" id="Pmn-Es-e5a"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcQ-2J-gpz">
-                                                <rect key="frame" x="0.0" y="377.5" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="379.5" width="375" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-VO-HBt">
-                                                <rect key="frame" x="165" y="397.5" width="45" height="2"/>
+                                                <rect key="frame" x="165" y="399.5" width="45" height="2"/>
                                                 <color key="backgroundColor" red="0.74496191739999995" green="0.74475502969999996" blue="0.77093034979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="45" id="jNJ-HH-UEh"/>
@@ -1682,25 +1682,25 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k69-64-aVG">
-                                                <rect key="frame" x="0.0" y="399.5" width="375" height="17"/>
+                                                <rect key="frame" x="0.0" y="401.5" width="375" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send invite with referral code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhu-qS-cCQ">
-                                                <rect key="frame" x="83.5" y="416.5" width="208.5" height="19"/>
+                                                <rect key="frame" x="83.5" y="418.5" width="208.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                                 <color key="textColor" red="0.41185522079999998" green="0.41536486150000002" blue="0.43725296850000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHG-wG-3TP">
-                                                <rect key="frame" x="0.0" y="435.5" width="375" height="16.5"/>
+                                                <rect key="frame" x="0.0" y="437.5" width="375" height="16.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PyF-rQ-sp8">
-                                                <rect key="frame" x="28" y="527" width="319" height="40"/>
+                                                <rect key="frame" x="28" y="529" width="319" height="40"/>
                                                 <color key="backgroundColor" name="appButton"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="PyF-rQ-sp8" secondAttribute="height" multiplier="8:1" id="cPz-FW-ZFL"/>
@@ -1719,7 +1719,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1M-ij-iDp">
-                                                <rect key="frame" x="28" y="467" width="319" height="40"/>
+                                                <rect key="frame" x="28" y="469" width="319" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3b24zf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huV-xi-Lu4" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
                                                         <rect key="frame" x="132" y="9.5" width="55" height="21"/>
@@ -2057,24 +2057,24 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mup-nP-HUL" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="381" width="343" height="30.5"/>
+                                                <rect key="frame" x="16" y="381" width="343" height="31.5"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Note">
                                                         <attributes>
-                                                            <font key="NSFont" size="14" name="Poppins-SemiBold"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content=": ">
                                                         <attributes>
-                                                            <font key="NSFont" size="12" name="Poppins-Regular"/>
+                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="All prayer requests expire after 30 days. Please create new requests if you need continued prayers">
                                                         <attributes>
                                                             <color key="NSColor" red="0.52256745100000002" green="0.52264583109999996" blue="0.52255028489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <font key="NSFont" size="12" name="Poppins-Regular"/>
+                                                            <font key="NSFont" metaFont="cellTitle"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -2082,13 +2082,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqe-2W-94T">
-                                                <rect key="frame" x="0.0" y="411.5" width="375" height="27"/>
+                                                <rect key="frame" x="0.0" y="412.5" width="375" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4i-fn-tIE">
-                                                <rect key="frame" x="19" y="438.5" width="337.5" height="42"/>
+                                                <rect key="frame" x="19" y="439.5" width="337.5" height="42"/>
                                                 <color key="backgroundColor" name="appButton"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Z4i-fn-tIE" secondAttribute="height" multiplier="8:1" id="d4g-uj-hZn"/>
@@ -2689,16 +2689,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="39s-T7-Yr4">
-                                        <rect key="frame" x="105" y="24" width="255" height="42.5"/>
+                                        <rect key="frame" x="105" y="-5" width="255" height="100"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allen khair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTL-Aq-sgQ" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="255" height="23"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTL-Aq-sgQ" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="255" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="allenkhair@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LhO-oD-3PL" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="23" width="255" height="19.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LhO-oD-3PL" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="50" width="255" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <color key="textColor" systemColor="linkColor"/>
                                                 <nil key="highlightedColor"/>
@@ -4062,10 +4062,10 @@ Settings after purchase. Any unused portion of a free trial period, If offered w
                                 <rect key="frame" x="0.0" y="76.5" width="375" height="590.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghO-ub-K1N">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="451"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="476.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yub-vh-Pem">
-                                                <rect key="frame" x="16" y="16" width="343" height="225.5"/>
+                                                <rect key="frame" x="16" y="16" width="343" height="229"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ICMA FocusChoice Daily Devotionals Zoom Meeting" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QQ-LT-IgY">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="47"/>
@@ -4074,7 +4074,7 @@ Settings after purchase. Any unused portion of a free trial period, If offered w
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKu-2W-vR8" customClass="ICRegularLabel" customModule="ICMA" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="62" width="343" height="163.5"/>
+                                                        <rect key="frame" x="0.0" y="62" width="343" height="167"/>
                                                         <attributedString key="attributedText">
                                                             <fragment>
                                                                 <string key="content">The ICMA Daily Devotionals Focused on Christ Zoom Meetings with Judy Go Wrong at 10:30 AM USA, Eastern Time from Monday to  Friday.
@@ -4083,7 +4083,7 @@ On Saturday and Sunday, each day's Devotionals will be recorded and posted for y
 Saturday's Video and Sunday's Video                           </string>
                                                                 <attributes>
                                                                     <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                    <font key="NSFont" size="16" name="Poppins-Regular"/>
+                                                                    <font key="NSFont" metaFont="system" size="16"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="2" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -4093,13 +4093,13 @@ Saturday's Video and Sunday's Video                           </string>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puh-RS-NVR">
-                                                <rect key="frame" x="0.0" y="241.5" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="245" width="375" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="JHE-e3-Ec3">
-                                                <rect key="frame" x="16" y="277.5" width="343" height="148.5"/>
+                                                <rect key="frame" x="16" y="281" width="343" height="170.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please join us!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyc-rs-KPe">
                                                         <rect key="frame" x="0.0" y="0.0" width="135" height="24.5"/>
@@ -4108,19 +4108,26 @@ Saturday's Video and Sunday's Video                           </string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To join the Zoom meeting, use the following Zoom link and meeting credentials:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8p-TC-TN5" customClass="ICRegularLabel" customModule="ICMA" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="27.5" width="335" height="41"/>
+                                                        <rect key="frame" x="0.0" y="27.5" width="343" height="41"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https: // us04web.zoom.us/j/78263208311? pwd = dDNiMU5yQ2|IW|U2RXN2dnZwN0|nZz09" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0L-OS-czL" customClass="ICRegularLabel" customModule="ICMA" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="71.5" width="320.5" height="33"/>
-                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oc-hJ-PcF">
+                                                        <rect key="frame" x="0.0" y="71.5" width="343" height="55"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="55" id="emG-5p-D9t"/>
+                                                        </constraints>
+                                                        <string key="text"> https: // us04web.zoom.us/j/78263208311? pwd = dDNiMU5yQ2|IW|U2RXN2dnZwN0|nZz09
+</string>
                                                         <color key="textColor" name="appButton"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                    </textView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sYQ-sW-POB">
-                                                        <rect key="frame" x="0.0" y="107.5" width="188" height="19"/>
+                                                        <rect key="frame" x="0.0" y="129.5" width="188" height="19"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meeting ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3c-8W-v26" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="82.5" height="19"/>
@@ -4137,7 +4144,7 @@ Saturday's Video and Sunday's Video                           </string>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6kI-Kw-Avs">
-                                                        <rect key="frame" x="0.0" y="129.5" width="135" height="19"/>
+                                                        <rect key="frame" x="0.0" y="151.5" width="135" height="19"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7By-Tt-gO7" customClass="ICMediumLabel" customModule="ICMA" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="75.5" height="19"/>
@@ -4154,6 +4161,10 @@ Saturday's Video and Sunday's Video                           </string>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="4oc-hJ-PcF" firstAttribute="trailing" secondItem="O8p-TC-TN5" secondAttribute="trailing" id="A6u-uo-4or"/>
+                                                    <constraint firstItem="4oc-hJ-PcF" firstAttribute="leading" secondItem="O8p-TC-TN5" secondAttribute="leading" id="f9i-wF-55z"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -4195,10 +4206,13 @@ Saturday's Video and Sunday's Video                           </string>
                             <constraint firstItem="u4z-m2-276" firstAttribute="height" secondItem="I6i-Ju-b2Y" secondAttribute="height" multiplier="0.1" id="meK-TY-T1K"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="linkText" destination="4oc-hJ-PcF" id="ADD-lq-vOH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2l2-Dx-Fqu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1316" y="2039"/>
+            <point key="canvasLocation" x="-1316" y="2038.8305847076463"/>
         </scene>
         <!--NotificationsVC-->
         <scene sceneID="7Rl-rI-wUH">
@@ -4363,7 +4377,7 @@ Saturday's Video and Sunday's Video                           </string>
                                 <rect key="frame" x="0.0" y="76.5" width="375" height="590.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJH-Pi-mkm">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="791"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="688"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAU-CN-0Py">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
@@ -4401,10 +4415,10 @@ Saturday's Video and Sunday's Video                           </string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REe-B3-cCR">
-                                                <rect key="frame" x="0.0" y="242" width="375" height="399"/>
+                                                <rect key="frame" x="0.0" y="242" width="375" height="296"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="iSC-tM-ELA">
-                                                        <rect key="frame" x="16" y="5" width="343" height="394"/>
+                                                        <rect key="frame" x="16" y="5" width="343" height="291"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNh-vT-Bia" userLabel="FirstNView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="85"/>
@@ -4562,61 +4576,7 @@ Saturday's Video and Sunday's Video                           </string>
                                                                     <constraint firstAttribute="height" constant="85" id="xne-t4-kpl"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zrs-1q-gHY" userLabel="PasswordView">
-                                                                <rect key="frame" x="0.0" y="309" width="343" height="85"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G3-Sw-atN" customClass="ICSemiboldLabel" customModule="ICMA" customModuleProvider="target">
-                                                                        <rect key="frame" x="5" y="5" width="333" height="19"/>
-                                                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PSi-xq-3my">
-                                                                        <rect key="frame" x="0.0" y="29" width="343" height="56"/>
-                                                                        <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yCv-it-ywY" customClass="ICMobileNumberTextField" customModule="ICMA" customModuleProvider="target">
-                                                                                <rect key="frame" x="10" y="0.0" width="323" height="56"/>
-                                                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
-                                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                                                <userDefinedRuntimeAttributes>
-                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                </userDefinedRuntimeAttributes>
-                                                                            </textField>
-                                                                        </subviews>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="trailing" secondItem="yCv-it-ywY" secondAttribute="trailing" constant="10" id="TNf-a7-c8q"/>
-                                                                            <constraint firstItem="yCv-it-ywY" firstAttribute="top" secondItem="PSi-xq-3my" secondAttribute="top" id="fFt-Rz-6kZ"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="yCv-it-ywY" secondAttribute="bottom" id="hhB-hM-MdH"/>
-                                                                            <constraint firstItem="yCv-it-ywY" firstAttribute="leading" secondItem="PSi-xq-3my" secondAttribute="leading" constant="10" id="ism-JJ-sIA"/>
-                                                                        </constraints>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                                <real key="value" value="0.69999999999999996"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="5"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </view>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="5G3-Sw-atN" firstAttribute="leading" secondItem="Zrs-1q-gHY" secondAttribute="leading" constant="5" id="14r-ms-f4I"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="PSi-xq-3my" secondAttribute="trailing" id="Avv-rK-afj"/>
-                                                                    <constraint firstItem="PSi-xq-3my" firstAttribute="leading" secondItem="Zrs-1q-gHY" secondAttribute="leading" id="Wzx-fE-eHX"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="PSi-xq-3my" secondAttribute="bottom" id="X0f-aV-UOo"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="5G3-Sw-atN" secondAttribute="trailing" constant="5" id="srm-NA-Jpx"/>
-                                                                    <constraint firstItem="5G3-Sw-atN" firstAttribute="top" secondItem="Zrs-1q-gHY" secondAttribute="top" constant="5" id="vo5-cJ-DgV"/>
-                                                                    <constraint firstItem="PSi-xq-3my" firstAttribute="top" secondItem="5G3-Sw-atN" secondAttribute="bottom" constant="5" id="xHo-0E-tL3"/>
-                                                                </constraints>
-                                                            </view>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="Zrs-1q-gHY" firstAttribute="height" secondItem="NNh-vT-Bia" secondAttribute="height" id="a2X-P6-jhK"/>
-                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -4628,13 +4588,13 @@ Saturday's Video and Sunday's Video                           </string>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3C-e6-jM0">
-                                                <rect key="frame" x="0.0" y="641" width="375" height="30"/>
+                                                <rect key="frame" x="0.0" y="538" width="375" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4MD-4T-EMR">
-                                                <rect key="frame" x="19" y="671" width="337.5" height="42"/>
+                                                <rect key="frame" x="19" y="568" width="337.5" height="42"/>
                                                 <color key="backgroundColor" red="0.61960784313725492" green="0.19607843137254902" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="4MD-4T-EMR" secondAttribute="height" multiplier="8:1" id="Le8-7c-cdx"/>
@@ -4720,11 +4680,9 @@ Saturday's Video and Sunday's Video                           </string>
                         <outlet property="fNameView" destination="4Pt-nE-4cs" id="edx-GY-nLI"/>
                         <outlet property="imgProfile" destination="zZa-8t-xzA" id="2r5-Eo-ZZ6"/>
                         <outlet property="lNameView" destination="nyY-VM-WFl" id="63p-dR-QBf"/>
-                        <outlet property="mobileView" destination="PSi-xq-3my" id="r48-Id-Ekl"/>
                         <outlet property="txtEmail" destination="ouX-b8-dqq" id="U0k-P1-F9r"/>
                         <outlet property="txtFirstName" destination="mMG-ts-N8T" id="TFH-ty-9q3"/>
                         <outlet property="txtLastName" destination="fKV-kb-TPS" id="Ykk-vc-GF0"/>
-                        <outlet property="txtMobile" destination="yCv-it-ywY" id="KBs-Zx-PgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tef-fx-bO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

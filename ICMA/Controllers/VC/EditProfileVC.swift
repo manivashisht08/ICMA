@@ -17,8 +17,8 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
     var imageData = Data()
     var delegate:EditProfileProtocol?
     
-    @IBOutlet weak var txtMobile: ICMobileNumberTextField!
-    @IBOutlet weak var mobileView: UIView!
+   // @IBOutlet weak var txtMobile: ICMobileNumberTextField!
+   // @IBOutlet weak var mobileView: UIView!
     @IBOutlet weak var txtEmail: ICEmailTextField!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var txtLastName: ICUsernameTextField!
@@ -31,6 +31,7 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
     var email = String()
     var fname = String()
     var lname = String()
+    var img = String()
     var imagePickerVC: ImagePicker?
     var selectedImage: UIImage? {
         didSet {
@@ -45,6 +46,7 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
         txtEmail.text = email
         txtFirstName.text = fname
         txtLastName.text = lname
+        self.imgProfile.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "proplaceholder"))
         setup()
        
     }
@@ -58,35 +60,35 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
         txtFirstName.delegate = self
         txtLastName.delegate = self
         txtEmail.delegate = self
-        txtMobile.delegate = self
+            //   txtMobile.delegate = self
     }
     
-//    func editProfileApi(){
-//        DispatchQueue.main.async {
-//            AFWrapperClass.svprogressHudShow(title: "", view: self)
-//        }
-//        let token = UserDefaults.standard.string(forKey: "token") ?? ""
-//        let userId = UserDefaults.standard.string(forKey: "id") ?? ""
-//        let header:HTTPHeaders = ["token":token]
-//        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.editProfile, params: generatingParameters(), headers: header) { (response) in
-//            print(response)
-//            AFWrapperClass.svprogressHudDismiss(view: self)
-//            let msg = response["message"] as? String ?? ""
-//            let status = response["status"] as? Int ?? 0
-//            if status == 1 {
-//                showAlertMessage(title: kAppName.localized(), message: msg, okButton: "OK", controller: self) {
-//                    
-//                }
-//            }else {
-//                alert(AppAlertTitle.appName.rawValue, message: msg, view: self)
-//            }
-//            
-//        } failure: { error in
-//            AFWrapperClass.svprogressHudDismiss(view: self)
-//            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
-//        }
-//        
-//    }
+    func editProfileApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "", view: self)
+        }
+        let token = UserDefaults.standard.string(forKey: "token") ?? ""
+        let userId = UserDefaults.standard.string(forKey: "id") ?? ""
+        let header:HTTPHeaders = ["token":token]
+        AFWrapperClass.requestPOSTURL(baseURL + ICMethods.editProfile, params: generatingParameters(), headers: header) { (response) in
+            print(response)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let msg = response["message"] as? String ?? ""
+            let status = response["status"] as? Int ?? 0
+            if status == 1 {
+                showAlertMessage(title: kAppName.localized(), message: msg, okButton: "OK", controller: self) {
+                    
+                }
+            }else {
+                alert(AppAlertTitle.appName.rawValue, message: msg, view: self)
+            }
+            
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+        
+    }
     
     func editProfileApis()  {
         DispatchQueue.main.async {
@@ -96,7 +98,7 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
         let userId = UserDefaults.standard.string(forKey: "id") ?? ""
         let url = baseURL + ICMethods.editProfile
         var params = [String:Any]()
-        params = ["firstname":txtFirstName.text!,"lastname":txtLastName.text!,"phone":txtMobile.text!,"password":"123456"]
+        params = ["firstname":txtFirstName.text!,"lastname":txtLastName.text!,"phone":"","password":"123456"]
         print (params)
         AF.upload(multipartFormData: { (multipartFormData) in
             
@@ -140,7 +142,7 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
     func generatingParameters() -> [String:AnyObject] {
         var parameters:[String:AnyObject] = [:]
         parameters["email"] = txtEmail.text  as AnyObject
-        parameters["phone"] = txtMobile.text  as AnyObject
+        parameters["phone"] = ""  as AnyObject
         parameters["firstname"] = txtFirstName.text  as AnyObject
         parameters["lastname"] = txtLastName.text  as AnyObject
         
@@ -176,12 +178,12 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
 //            return false
 //        }
         
-        if ValidationManager.shared.isEmpty(text: txtMobile.text) == true {
-            showAlertMessage(title: kAppName.localized(), message: "Please enter mobile number." , okButton: "Ok", controller: self) {
-            }
-            
-            return false
-        }
+//        if ValidationManager.shared.isEmpty(text: txtMobile.text) == true {
+//            showAlertMessage(title: kAppName.localized(), message: "Please enter mobile number." , okButton: "Ok", controller: self) {
+//            }
+//
+//            return false
+//        }
         
         return true
     }
@@ -215,8 +217,8 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
             lNameView.borderColor =  ICColor.appButton
         case txtEmail:
             emailView.borderColor =  ICColor.appButton
-        case txtMobile:
-            mobileView.borderColor =  ICColor.appButton
+//        case txtMobile:
+//            mobileView.borderColor =  ICColor.appButton
         default:break
             
         }
@@ -230,8 +232,8 @@ class EditProfileVC: UIViewController,UITextViewDelegate, UITextFieldDelegate, I
             lNameView.borderColor = ICColor.appBorder
         case txtEmail:
             emailView.borderColor = ICColor.appBorder
-        case txtMobile:
-            mobileView.borderColor = ICColor.appBorder
+//        case txtMobile:
+//            mobileView.borderColor = ICColor.appBorder
         default:break
         }
     }

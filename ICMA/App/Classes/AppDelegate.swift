@@ -76,12 +76,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions) { (bloo, error) in
+                
+            }
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
         configureKeboard()
         getCustomFontDetails()
         configureNavigationBar()
         setRootVC()
-//        logInDefaults()
-//         navigationApi()
+        //        logInDefaults()
+        //         navigationApi()
         sleep(2)
         //        window?.tintColor = SSColor.appBlack
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.391271323, green: 0.1100022718, blue: 0.353789866, alpha: 1)
@@ -171,3 +187,66 @@ extension AppDelegate {
     }
 }
 
+@available(iOS 12.0, *)
+extension AppDelegate : UNUserNotificationCenterDelegate {
+    
+    // Receive displayed notifications for iOS 10 devices.
+ 
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        if let userInfo = notification.request.content.userInfo as? [String:Any]{
+            print(userInfo)
+            if let apnsData = userInfo["aps"] as? [String:Any]{
+                if let dataObj = apnsData["data"] as? [String:Any]{
+                    let notificationType = dataObj["notification_type"] as? String
+                    let state = UIApplication.shared.applicationState
+                }
+            }
+        }
+        
+        
+        
+        
+        // Print full message.
+        // print("user info is \(userInfo)")
+        
+        // Change this to your preferred presentation option
+        // completionHandler([])
+        //Show Push notification in foreground
+        // completionHandler([.alert, .badge, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        if let userInfo = response.notification.request.content.userInfo as? [String:Any]{
+            print(userInfo)
+            if let apnsData = userInfo["aps"] as? [String:Any]{
+                if let dataObj = apnsData["data"] as? [String:Any]{
+                    let notificationType = dataObj["notification_type"] as? String
+                    let childId = dataObj["child_id"] as? String
+                    
+                    let state = UIApplication.shared.applicationState
+                    if state != .active{
+                        
+                    }
+                }
+            }
+        }
+        completionHandler()
+    }
+    
+    func convertStringToDictionary(json: String) -> [String: AnyObject]? {
+        if let data = json.data(using: String.Encoding.utf8) {
+            let json = try? JSONSerialization.jsonObject(with: data, options:.mutableContainers) as? [String: AnyObject]
+            // if let error = error {
+            // print(error!)
+            //}
+            return json!
+        }
+        return nil
+    }
+    
+}

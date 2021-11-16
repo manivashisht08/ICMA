@@ -153,6 +153,7 @@ class ProfileSubscriptionVC: UIViewController,UITextViewDelegate, UITextFieldDel
         vc.email = txtEmail.text ?? ""
         vc.fname = txtFirstName.text ?? ""
         vc.lname = txtLastName.text ?? ""
+        vc.img = proImage
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

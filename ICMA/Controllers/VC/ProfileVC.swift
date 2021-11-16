@@ -24,7 +24,7 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         tblProfile.dataSource = self
         tblProfile.delegate = self
-        getPrayerApi()
+       
         
         tblProfile.register(UINib(nibName: "ProfileTVCell", bundle: nil), forCellReuseIdentifier: "ProfileTVCell")
         self.ProfileArray.append(ProfileData(image: ICImageName.iconChange, details: "Change Password"))
@@ -34,6 +34,9 @@ class ProfileVC: UIViewController {
         self.ProfileArray.append(ProfileData(image: ICImageName.iconContact, details: "Contact"))
         self.ProfileArray.append(ProfileData(image: ICImageName.iconRefer, details: "Refer a Friend")) 
         self.ProfileArray.append(ProfileData(image: ICImageName.iconLogout, details: "Logout")) 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        getPrayerApi()
     }
     
 //    func prm() -> [String:Any]{

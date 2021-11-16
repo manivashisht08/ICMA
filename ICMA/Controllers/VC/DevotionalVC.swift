@@ -10,8 +10,8 @@ import FittedSheets
 
 class DevotionalVC: UIViewController {
    
+    @IBOutlet weak var linkText: UITextView!
     @IBOutlet weak var dataView: UIView!
-    @IBOutlet weak var lblLink: ICRegularLabel!
     @IBOutlet weak var lblPasscode: ICRegularLabel!
     @IBOutlet weak var lblMeeting: ICRegularLabel!
     var centerFrame : CGRect!
@@ -42,14 +42,47 @@ class DevotionalVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let messageStr = " https: // us04web.zoom.us/j/78263208311? pwd = dDNiMU5yQ2|IW|U2RXN2dnZwN0|nZz09 "
+                
+                var attributedString: NSMutableAttributedString? = nil
+                do {
+                    if let data = messageStr.data(using: .unicode) {
+                        attributedString = try
+                            
+                            NSMutableAttributedString(data: data,
+                                                      options: [.documentType : NSAttributedString.DocumentType.html],
+                                                      documentAttributes: nil)
+                    }
+                } catch {
+                }
+                var res = attributedString
+                res?.beginEditing()
+                res?.enumerateAttribute(
+                    .font,
+                    in: NSRange(location: 0, length: res?.length ?? 0),
+                    options: [],
+                    using: { value, range, stop in
+                        if value != nil {
+                            
+                            let oldFont = value as? UIFont
+                            print("old font---> \(oldFont?.pointSize ?? 0.0)")
+                            let oldFontSize = oldFont?.pointSize ?? 0.0
+                            let newFont = oldFont?.withSize(14)
+                            res?.addAttribute(.font, value: newFont, range: range)
+                        }
+                })
+        
+                res?.endEditing()
+       
+        linkText.attributedText = res
+        linkText.textColor = #colorLiteral(red: 0.6210585237, green: 0.1947439313, blue: 0.9591183066, alpha: 1)
     }
 
     
     @IBAction func btnDismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     
     
 }

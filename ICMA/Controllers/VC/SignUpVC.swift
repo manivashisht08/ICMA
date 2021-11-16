@@ -71,7 +71,8 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
         parameters["lastname"] = txtLastName.text  as AnyObject
 
         parameters["devicetype"] = "1"  as AnyObject
-        var deviceToken  = getSAppDefault(key: "DeviceToken") as? String ?? ""
+        var deviceToken  = getSAppDefault(key: "deviceToken") as? String ?? ""
+        print(deviceToken,"pppp")
         if deviceToken == ""{
             deviceToken = "123"
         }
@@ -93,7 +94,7 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
         txtEmail.delegate = self
         txtPassword.delegate = self
         
-        
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     func validate() -> Bool {
