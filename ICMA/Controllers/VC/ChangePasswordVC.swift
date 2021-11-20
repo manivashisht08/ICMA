@@ -11,13 +11,17 @@ import Alamofire
 
 class ChangePasswordVC: UIViewController,UITextFieldDelegate,UITextViewDelegate {
     
+    @IBOutlet weak var confirmEyeIcon: UIImageView!
+    @IBOutlet weak var newEyeIcon: UIImageView!
+   
     @IBOutlet weak var txtConfirmPswrd: ICPasswordTextField!
     @IBOutlet weak var confirmNPswrdView: UIView!
     @IBOutlet weak var txtNewPswrd: ICPasswordTextField!
     @IBOutlet weak var newPswrdView: UIView!
     @IBOutlet weak var txtCurrentPswrd: ICPasswordTextField!
     @IBOutlet weak var currentPswrdView: UIView!
-    
+    var iconClick = true
+
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +127,31 @@ class ChangePasswordVC: UIViewController,UITextFieldDelegate,UITextViewDelegate 
         }else{
             changePasswordApi()
         }
+    }
+    
+   
+    
+    @IBAction func btnNewPswrd(_ sender: UIButton) {
+        if(iconClick == true) {
+            txtNewPswrd.isSecureTextEntry = false
+            newEyeIcon.image = UIImage(named: "eyeshow")
+        } else {
+            txtNewPswrd.isSecureTextEntry = true
+            newEyeIcon.image = UIImage(named: "eye")
+        }
+        iconClick = !iconClick
+    }
+    
+    
+    @IBAction func btnConfirmPswrd(_ sender: UIButton) {  if(iconClick == true) {
+        txtConfirmPswrd.isSecureTextEntry = false
+        confirmEyeIcon.image = UIImage(named: "eyeshow")
+    } else {
+        txtConfirmPswrd.isSecureTextEntry = true
+        confirmEyeIcon.image = UIImage(named: "eye")
+    }
+    iconClick = !iconClick
+        
     }
     
 }

@@ -32,10 +32,7 @@ class BreathingExerciseVC: UIViewController {
         
         tblBreathing.register(UINib(nibName: "BreathingTVCell", bundle: nil), forCellReuseIdentifier: "BreathingTVCell")
         
-//        self.BreathingArray.append(BreathingData(image: "img1", details:" Inhale God's Peace, Exhale Anxiety with Guidance", time : "  4-5 min"))
-//        self.BreathingArray.append(BreathingData(image: "img2", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  3-7 min"))
-//        self.BreathingArray.append(BreathingData(image: "img3", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
-//        self.BreathingArray.append(BreathingData(image: "img4", details: " Inhale God's Peace, Exhale Anxiety with Guidance", time : "  1-2 min"))
+
     }
     @IBAction func btnVideoTapped(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "CustomVideoPlayer") as! CustomVideoPlayer
@@ -63,18 +60,7 @@ extension BreathingExerciseVC : UITableViewDelegate , UITableViewDataSource{
                 return cell
             }
             return UITableViewCell()
-//        }else{
-//            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: BreathingTVCell.self)) as? BreathingTVCell {
-//                cell.profileImg.image = UIImage(named: BreathingArray[indexPath.row].image)
-//                cell.lblName.text = BreathingArray[indexPath.row].details
-//                cell.lblTime.text = BreathingArray[indexPath.row].time
-//                DispatchQueue.main.async {
-//                    self.heightConstraint.constant = self.tblBreathing.contentSize.height
-//                }
-//                return cell
-//            }
-//            return UITableViewCell()
-//        }
+
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let view: ProfileViewForTitle = UIView.fromNib()
@@ -157,7 +143,7 @@ extension BreathingExerciseVC {
                     if let dataDict = result["audio"] as? [[String:Any]]{
                         var audioDt = [audioVideoListingModel]()
                         for obj in dataDict{
-                            var dtDict = obj["data"] as? [NSDictionary] ?? [NSDictionary]()
+                            let dtDict = obj["data"] as? [NSDictionary] ?? [NSDictionary]()
                             print (dtDict)
                             for obj2 in dtDict{
                                 audioDt.append(audioVideoListingModel.init(id: obj2["id"] as? String ?? "",

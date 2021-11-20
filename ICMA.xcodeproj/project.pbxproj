@@ -40,6 +40,7 @@
 		7C327D0D270F0C7E00614F50 /* ClassicsHymnsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C327D0C270F0C7E00614F50 /* ClassicsHymnsVC.swift */; };
 		7C507DC02726B41F00B0C8EA /* Storyboard Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C507DBF2726B41E00B0C8EA /* Storyboard Class.swift */; };
 		7C507DE92729574A00B0C8EA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C507DE82729574900B0C8EA /* Model.swift */; };
+		7C7568392748CCF500B4FA1F /* SplashScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7568382748CCF500B4FA1F /* SplashScreenVC.swift */; };
 		7C76D859271ED7FF00C574AF /* ReferFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76D858271ED7FF00C574AF /* ReferFriendVC.swift */; };
 		7C76D8FB271EEA2700C574AF /* Demoable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76D8FA271EEA2700C574AF /* Demoable.swift */; };
 		7C790DEB273D32A60057549B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C790DE9273D32A60057549B /* PlayerView.swift */; };
@@ -131,6 +132,7 @@
 		7C327D0C270F0C7E00614F50 /* ClassicsHymnsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicsHymnsVC.swift; sourceTree = "<group>"; };
 		7C507DBF2726B41E00B0C8EA /* Storyboard Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Class.swift"; sourceTree = "<group>"; };
 		7C507DE82729574900B0C8EA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		7C7568382748CCF500B4FA1F /* SplashScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenVC.swift; sourceTree = "<group>"; };
 		7C76D858271ED7FF00C574AF /* ReferFriendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferFriendVC.swift; sourceTree = "<group>"; };
 		7C76D8FA271EEA2700C574AF /* Demoable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demoable.swift; sourceTree = "<group>"; };
 		7C790DE9273D32A60057549B /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -216,6 +218,16 @@
 				3211F143FD8C64391037C19B /* Pods-ICMA.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		7C7568372748CCB000B4FA1F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				7C7ED95A270C814A000FDC18 /* ForgotPasswordVC.swift */,
+				7C7ED954270C80A2000FDC18 /* LogInVC.swift */,
+				7C7ED957270C80E2000FDC18 /* SignUpVC.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		7C790DE8273D32A60057549B /* Video */ = {
@@ -407,16 +419,15 @@
 		7C7ED8D1270C3848000FDC18 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				7C7568372748CCB000B4FA1F /* Authentication */,
 				3571CDC92715A25700B48705 /* AudioVC.swift */,
-				7C327D05270EC3D000614F50 /* BreathingExerciseVC.swift */,
 				7CB8FD8127311597000AB379 /* ChangePasswordVC.swift */,
+				7C327D05270EC3D000614F50 /* BreathingExerciseVC.swift */,
 				7C327D0C270F0C7E00614F50 /* ClassicsHymnsVC.swift */,
 				358A640D2716B7E600F22310 /* ContactVC.swift */,
 				7CB3D964271D6748000A4329 /* DevotionalVC.swift */,
 				7C7ED9D0270DBD91000FDC18 /* DFHSTherapyVC.swift */,
 				3571CDC7271595D000B48705 /* EditProfileVC.swift */,
-				7C7ED95A270C814A000FDC18 /* ForgotPasswordVC.swift */,
-				7C7ED954270C80A2000FDC18 /* LogInVC.swift */,
 				7CB3D961271D64F0000A4329 /* MembershipVC.swift */,
 				7C327D09270EFB2000614F50 /* NeedSleepVC.swift */,
 				356664C7271579830073A2C4 /* NotificationsVC.swift */,
@@ -426,9 +437,9 @@
 				358A640F2716EA4800F22310 /* ProfileVC.swift */,
 				7C76D858271ED7FF00C574AF /* ReferFriendVC.swift */,
 				358A640B2716A4E800F22310 /* SearchVC.swift */,
-				7C7ED957270C80E2000FDC18 /* SignUpVC.swift */,
 				35C5992D27181BEA007A363C /* SubscriptionVC.swift */,
 				7C7ED9D3270DC4FE000FDC18 /* TabBarVC.swift */,
+				7C7568382748CCF500B4FA1F /* SplashScreenVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -624,6 +635,7 @@
 				358A640C2716A4E800F22310 /* SearchVC.swift in Sources */,
 				7C7ED910270C3B0A000FDC18 /* ICImagePickerVC.swift in Sources */,
 				7C7ED8DA270C3A3E000FDC18 /* AppDefaults.swift in Sources */,
+				7C7568392748CCF500B4FA1F /* SplashScreenVC.swift in Sources */,
 				187DCD5B270DA91700579F16 /* LoginSignUpEntity.swift in Sources */,
 				7C7ED955270C80A2000FDC18 /* LogInVC.swift in Sources */,
 				35C5992E27181BEA007A363C /* SubscriptionVC.swift in Sources */,
@@ -818,9 +830,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ICMA/ICMA.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.15;
+				CURRENT_PROJECT_VERSION = 1.19;
 				DEVELOPMENT_TEAM = 929X3K498V;
 				INFOPLIST_FILE = ICMA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -830,7 +842,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icma.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = icma_19_oct_2021_dev;
+				PROVISIONING_PROFILE_SPECIFIER = icma_19_oct_2021_dist;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -843,9 +855,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ICMA/ICMA.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.15;
+				CURRENT_PROJECT_VERSION = 1.19;
 				DEVELOPMENT_TEAM = 929X3K498V;
 				INFOPLIST_FILE = ICMA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -855,7 +867,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icma.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = icma_19_oct_2021_dev;
+				PROVISIONING_PROFILE_SPECIFIER = icma_19_oct_2021_dist;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

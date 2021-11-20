@@ -35,9 +35,9 @@ class PrayerVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         page = 1
         pageCount = 1
-        
         getPrayApi()
 //        self.tblPrayer.reloadData()
+        self.prayerGet.removeAll()
     }
     
     @objc func reloadtV() {
@@ -110,7 +110,7 @@ extension PrayerVC : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrayerTVCell", for: indexPath) as! PrayerTVCell
         
-        cell.lblName.text = prayerGet[indexPath.row].name
+        cell.lblName.text = prayerGet[indexPath.row].title
         cell.lblTime.text = prayerGet[indexPath.row].creation_at
         cell.lblDetails.text = prayerGet[indexPath.row].detail
         return cell

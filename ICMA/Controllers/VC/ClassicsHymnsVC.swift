@@ -71,7 +71,7 @@ extension ClassicsHymnsVC : UITableViewDelegate , UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let view: ProfileViewForTitle = UIView.fromNib()
-//        view.titleLbl.text = "For Anxiety - Inhale Peace,Exhale Anxiety";"For Pain - Inhale Healing,Exhale Pain"
+        view.titleLbl.text = "For Anxiety - Inhale Peace,\n Exhale Anxiety"; "For Pain - Inhale Healing, \n Exhale Pain"
         view.layoutSubviews()
         return 70
         
@@ -79,8 +79,8 @@ extension ClassicsHymnsVC : UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view: ProfileViewForTitle = UIView.fromNib()
-//        view.titleLbl.text = "For Anxiety - Inhale Peace,Exhale Anxiety"
-//        view.titleLbl.text = "For Anxiety - Inhale Peace,\nExhale Anxiety";"For Pain - Inhale Healing,\nExhale Pain"
+        view.titleLbl.text = "For Anxiety - Inhale Peace, \nExhale Anxiety";"For Pain - Inhale Healing,\nExhale Pain"
+
         view.layoutSubviews()
         return view
     }
@@ -171,7 +171,6 @@ extension ClassicsHymnsVC {
                     appDel.logout()
                 }
                
-
             }
             else{
             }

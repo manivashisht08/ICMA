@@ -96,6 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         getCustomFontDetails()
         configureNavigationBar()
         setRootVC()
+//        setInitialLanding()
         //        logInDefaults()
         //         navigationApi()
         sleep(2)
@@ -125,6 +126,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.makeKeyAndVisible()
         }
     }
+//    func setInitialLanding(){
+//        let vc = SplashScreenVC.instantiate(fromAppStoryboard: .Main)
+//        let nav = UINavigationController(rootViewController: vc)
+//        nav.isNavigationBarHidden = true
+//        AppDelegate().window?.rootViewController = nav
+//    }
     
     func logInDefaults(){
         if let userId = UserDefaults.standard.value(forKey: "Uid") as? String{

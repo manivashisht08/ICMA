@@ -12,6 +12,7 @@ import SafariServices
 
 class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var eyeIcon: UIImageView!
     @IBOutlet weak var txtLastName: ICUsernameTextField!
     @IBOutlet weak var txtFirstName: ICUsernameTextField!
     @IBOutlet weak var lastNameView: UIView!
@@ -22,7 +23,8 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var txtEmail: ICEmailTextField!
     @IBOutlet weak var txtPassword: ICPasswordTextField!
     let rest = RestManager()
-    
+    var iconClick = true
+
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
     var unchecked = Bool()
     var agreeTerms = false
@@ -180,6 +182,17 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
         self.pop()
     }
     
+    @IBAction func btnEye(_ sender: UIButton) {
+        if(iconClick == true) {
+            txtPassword.isSecureTextEntry = false
+            eyeIcon.image = UIImage(named: "eyeshow")
+        } else {
+            txtPassword.isSecureTextEntry = true
+            eyeIcon.image = UIImage(named: "eye")
+        }
+        iconClick = !iconClick
+    }
+    
     //------------------------------------------------------
     
     //MARK: UITextFieldDelegate
@@ -219,7 +232,6 @@ class SignUpVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
     }
     

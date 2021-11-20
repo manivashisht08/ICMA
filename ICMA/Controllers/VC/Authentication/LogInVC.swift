@@ -11,12 +11,15 @@ import IQKeyboardManagerSwift
 
 class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var eyeIcon: UIImageView!
     @IBOutlet weak var viewPassword: UIView!
     @IBOutlet weak var viewEmail: UIView!
     @IBOutlet weak var btnRemember: ICRememberMeButton!
     @IBOutlet weak var txtPassword: ICPasswordTextField!
     @IBOutlet weak var txtEmail: ICEmailTextField!
     let rest = RestManager()
+    var iconClick = true
+
     var rememberMeSelected = false
     //    var iconClick = true
     var returnKeyHandler: IQKeyboardReturnKeyHandler?
@@ -212,6 +215,17 @@ class LogInVC : BaseVC, UITextFieldDelegate, UITextViewDelegate {
             signInApi()
         }
         
+    }
+    
+    @IBAction func btnEye(_ sender: UIButton) {
+        if(iconClick == true) {
+            txtPassword.isSecureTextEntry = false
+            eyeIcon.image = UIImage(named: "eyeshow")
+        } else {
+            txtPassword.isSecureTextEntry = true
+            eyeIcon.image = UIImage(named: "eye")
+        }
+        iconClick = !iconClick
     }
     @IBAction func rememberBtnAction(_ sender: UIButton) {
         
